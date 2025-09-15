@@ -2712,7 +2712,7 @@ void rvWeapon::LaunchProjectiles ( idDict& dict, const idVec3& muzzleOrigin, con
 		}
 		
 		// Launch the actual projectile
-		proj->Launch( muzzle_pos + startOffset, dir, pushVelocity, fuseOffset, power );
+		proj->Launch( muzzle_pos + startOffset, -dir, pushVelocity, fuseOffset, power );
 		
 		// Increment the projectile launch count and let the derived classes
 		// mess with it if they want.
