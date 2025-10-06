@@ -676,6 +676,12 @@ void idPhysics_Player::AirMove( void ) {
 
 	// NOTE: enable stair checking while moving through the air in multiplayer to allow bunny hopping onto stairs
 	idPhysics_Player::SlideMove( true, gameLocal.isMultiplayer, false, false );
+
+	if (idPhysics_Player::CheckJump2()) {
+		// jumped away
+		idPhysics_Player::AirMove();
+		}
+		return;
 }
 
 /*
@@ -2306,4 +2312,40 @@ void idPhysics_Player::SetClipModelNoLink( idClipModel *model ) {
 		delete clipModel;
 	}
 	clipModel = model;
+}
+
+
+bool idPhysics_Player::CheckJump2(void) {
+	idVec3 addVelocity;
+
+	if (command.upmove < 10) {
+		// not holding jump
+		return false;
+	}
+
+	// must wait for jump to be released
+	if (current.movementFlags & PMF_JUMP_HELD) {
+		return false;
+	}
+
+	// don't jump if we can't stand up
+	if (current.movementFlags & PMF_DUCKED) {
+		return false;
+	}
+
+
+	groundPlane = false;		// jumping away
+	walking = false;
+	current.movementFlags |= PMF_JUMP_HELD | PMF_JUMPED;
+
+	addVelocity = 2 * (2.0f * maxJumpHeight * -gravityVector);
+	addVelocity *= idMath::Sqrt(addVelocity.Normalize());
+	current.velocity += addVelocity;
+
+	// RAVEN BEGIN
+	// bdube: crouch slide, nick maggoire is awesome
+	current.crouchSlideTime = 0;
+	// RAVEN END
+
+	return true;
 }

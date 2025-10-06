@@ -185,6 +185,8 @@ private:
 
 	float					Pm_Accelerate( void );
 	float					Pm_AirAccelerate( void );
+
+	bool					CheckJump2(void);
 };
 
 ID_INLINE bool idPhysics_Player::IsNoclip( void ) const {
