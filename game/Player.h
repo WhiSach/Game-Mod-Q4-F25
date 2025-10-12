@@ -1329,4 +1329,6 @@ ID_INLINE bool idPlayer::CanFire( void ) const {
 
 #endif /* !__GAME_PLAYER_H__ */
 
-// RAVEN END
+float GetSpeed(void);
+
+// RAVEN END;

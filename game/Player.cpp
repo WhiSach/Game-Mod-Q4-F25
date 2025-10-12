@@ -3436,6 +3436,9 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 		UpdateHudAmmo( _hud );
 	}
 	
+	float speed = physicsObj.GetLinearVelocity().Length();
+	_hud->SetStateString("player_speed", va("%.0f", speed));
+
 	_hud->StateChanged( gameLocal.time );
 }
 
