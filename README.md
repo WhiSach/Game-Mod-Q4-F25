@@ -1,12 +1,12 @@
-\# Quake 4 Mod: \*\*ModTest\*\*
+# Quake 4 Mod: ModTest
 
 
 
-\### Overview  
+## Overview  
 
-\*\*ModTest\*\* is a custom Quake 4 modification inspired by \*Sonic the Hedgehog\*, bringing new movement mechanics, health systems, and world interactions.
+ModTest is a custom Quake 4 modification inspired by Sonic the Hedgehog, bringing new movement mechanics, health systems, and world interactions.
 
-This project is currently a \*\*Work in Progress (WIP)\*\* and focuses on reimagining Quake 4 gameplay with Sonic-style features.
+This project is currently a Work in Progress (WIP) and focuses on reimagining Quake 4 gameplay with Sonic-style features.
 
 
 
@@ -14,15 +14,15 @@ This project is currently a \*\*Work in Progress (WIP)\*\* and focuses on reimag
 
 
 
-\## Installation Instructions
+## Installation Instructions
 
 
 
-1\. \*\*Locate your Quake 4 directory\*\* — this is the folder containing `Quake4.exe`.  
+1. Locate your Quake 4 directory — this is the folder containing `Quake4.exe`.  
 
-2\. \*\*Copy\*\* the entire `ModTest` folder into that directory.  
+2. Copy the entire `ModTest` folder into that directory.  
 
-3\. \*\*Launch the mod\*\* in one of the following ways:
+3\. Launch the mod in one of the following ways:
 
 &nbsp;  - \*\*In-game method:\*\*  
 
@@ -46,15 +46,15 @@ This project is currently a \*\*Work in Progress (WIP)\*\* and focuses on reimag
 
 
 
-\## How to Play (WIP)
+## How to Play (WIP)
 
 
 
-\### Currently Implemented
+### Currently Implemented
 
-\- \*\*Sonic Ring / Health System:\*\*  
+**Sonic Rings / Health System:**  
 
-&nbsp; When the player takes damage, they \*\*drop rings (health shards)\*\* — just like Sonic losing rings when hit.
+When the player takes damage, they drop rings (health shards) — just like Sonic losing rings when hit.
 
 
 
@@ -92,9 +92,9 @@ This project is currently a \*\*Work in Progress (WIP)\*\* and focuses on reimag
 
 
 
-\## Credits
+## Credits
 
-Developed by: \*\*Sachin Arcot\*\* for IT266 @ NJIT
+Developed by: Sachin Arcot for IT266 @ NJIT
 
 Inspired by: \*Sonic the Hedgehog\* and \*Quake 4\*  
 
