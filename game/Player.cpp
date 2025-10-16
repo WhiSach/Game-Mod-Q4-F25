@@ -10323,9 +10323,12 @@ void idPlayer::Damage( idEntity *inflictor, idEntity *attacker, const idVec3 &di
 	lastDamageLocation = location;
 
 	const char* ring = "item_health_shard";
-	idVec3 playerPos = GetPhysics()->GetOrigin() + idVec3(100,100,20);
 	idVec3 itemDropVelocity = idVec3(0, 0, 100);
-	idMoveableItem::DropItem(ring, playerPos, mat3_identity,itemDropVelocity,0,0);
+	for (int i = 0; i < damage; i++) {
+		idVec3 playerPos = GetPhysics()->GetOrigin() + idVec3(-50 + gameLocal.random.RandomFloat(), -50 + gameLocal.random.RandomFloat(), 100 + gameLocal.random.RandomFloat());
+		itemDropVelocity = idVec3( -50 + gameLocal.random.RandomFloat() * 100, -50 + gameLocal.random.RandomFloat() * 100, 100 + gameLocal.random.RandomFloat() * 50);
+		idMoveableItem::DropItem(ring, playerPos, mat3_identity, itemDropVelocity, 0, 0);
+	}
 }
 
 /*
