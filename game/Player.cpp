@@ -8612,6 +8612,15 @@ void idPlayer::PerformImpulse( int impulse ) {
  			LastWeapon();
  			break;
  		}
+
+		case IMPULSE_23: {
+			physicsObj.SideStep(-1.0f);
+			break;
+		}
+		case IMPULSE_24: {
+			physicsObj.SideStep(1.0f);
+			break;
+		}
 	} 
 
 //RAVEN BEGIN

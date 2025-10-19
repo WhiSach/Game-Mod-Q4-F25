@@ -79,6 +79,8 @@ public:
 	bool					OnLadder( void ) const;
 	const idVec3 &			PlayerGetOrigin( void ) const;	// != GetOrigin
 
+	void					SideStep(float side_scale);
+
 public:	// common physics interface
 	bool					Evaluate( int timeStepMSec, int endTimeMSec );
 	void					UpdateTime( int endTimeMSec );
@@ -186,7 +188,7 @@ private:
 	float					Pm_Accelerate( void );
 	float					Pm_AirAccelerate( void );
 
-	bool					CheckJump2(void);
+	bool					CheckJump2( void );
 };
 
 ID_INLINE bool idPhysics_Player::IsNoclip( void ) const {

@@ -210,12 +210,8 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>REM Ensure target folder exists (ignore error if it already does)
-mkdir "C:\Program Files (x86)\Steam\steamapps\common\Quake 4\ModTest" 2&gt;nul
-
-REM Copy the built DLL to the game mod folder, overwriting if present
-copy /Y "C:\Users\Sachin\Documents\Quake4Mod\Win32\Release\Gamex86.dll" "C:\Program Files (x86)\Steam\steamapps\common\Quake 4\ModTest\Gamex86.dll" &gt;nul
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
