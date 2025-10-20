@@ -12,7 +12,7 @@ const float PM_SWIMSCALE		= 0.5f;
 const float PM_LADDERSPEED		= 100.0f;
 const float PM_STEPSCALE		= 1.0f;
 
-const float PM_ACCELERATE_SP	= 10.0f;
+const float PM_ACCELERATE_SP	= 50.0f;
 const float PM_AIRACCELERATE_SP	= 50.0f;
 const float PM_ACCELERATE_MP	= 15.0f;
 const float PM_AIRACCELERATE_MP	= 1.18f;
@@ -124,11 +124,11 @@ void idPhysics_Player::Accelerate( const idVec3 &wishdir, const float wishspeed,
 		accelspeed = accel * frametime * wishspeed;
 	}
 // RAVEN END
-	if ( accelspeed > addspeed ) {
-		accelspeed = addspeed;
-	}
+	//if ( accelspeed > addspeed + 500) {
+	//	accelspeed = addspeed;
+	//}
 	
-	current.velocity += addspeed * wishdir;
+	current.velocity += accelspeed * wishdir;
 
 #else
 	// proper way (avoids strafe jump maxspeed bug), but feels bad
@@ -2341,7 +2341,7 @@ bool idPhysics_Player::CheckJump2(void) {
 	walking = false;
 	current.movementFlags |= PMF_JUMP_HELD | PMF_JUMPED;
 
-	addVelocity = 2 * (2.0f * maxJumpHeight * -gravityVector);
+	addVelocity = 4 * (2.0f * maxJumpHeight * -gravityVector);
 	addVelocity *= idMath::Sqrt(addVelocity.Normalize());
 	current.velocity += addVelocity;
 
