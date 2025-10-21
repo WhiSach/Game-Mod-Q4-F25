@@ -1342,6 +1342,8 @@ idPlayer::idPlayer() {
 	teamAmmoRegenPending	= false;
 	teamDoubler			= NULL;		
 	teamDoublerPending		= false;
+
+	nextBoostDecrementTime = 0;
 }
 
 /*
@@ -1808,7 +1810,7 @@ Prepare any resources used by the player.
 void idPlayer::Spawn( void ) {
 	idStr		temp;
 	idBounds	bounds;
-
+	boost = 10;
 	if ( entityNumber >= MAX_CLIENTS ) {
 		gameLocal.Error( "entityNum > MAX_CLIENTS for player.  Player may only be spawned with a client." );
 	}
@@ -2762,6 +2764,7 @@ Chooses a spawn location and spawns the player
 void idPlayer::SpawnFromSpawnSpot( void ) {
 	idVec3		spawn_origin;
 	idAngles	spawn_angles;
+	//idVec3 spawn_point = (10206, -7500, 128);
 	
 	if( !SelectSpawnPoint( spawn_origin, spawn_angles ) ) {
 		forceRespawn = true;
@@ -3438,6 +3441,9 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	
 	float speed = physicsObj.GetLinearVelocity().Length();
 	_hud->SetStateString("player_speed", va("%.0f", speed));
+	
+	
+	_hud->SetStateString("pda_boost", va("%d", boost));
 
 	_hud->StateChanged( gameLocal.time );
 }
@@ -9655,6 +9661,10 @@ void idPlayer::Think( void ) {
 		inBuyZone = false;
 
 	inBuyZonePrev = false;
+
+	if (!(usercmd.buttons & BUTTON_RUN) && (usercmd.forwardmove || usercmd.rightmove) && (usercmd.upmove >= 0)) {
+		UpdateBoost();
+	}
 }
 
 /*
@@ -14095,6 +14105,22 @@ int idPlayer::CanSelectWeapon(const char* weaponName)
 	}
 
 	return weaponNum;
+}
+
+void idPlayer::UpdateBoost(void) {
+	if (boost <= 0) {
+		return;
+	}
+
+	if (gameLocal.time >= nextBoostDecrementTime) {
+		boost--;
+
+		if (boost < 0) {
+			boost = 0;
+		}
+
+		nextBoostDecrementTime = gameLocal.time + 1000;	
+	}
 }
 
 // RITUAL END

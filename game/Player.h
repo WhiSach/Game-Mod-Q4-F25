@@ -425,6 +425,8 @@ public:
 	float					buyMenuCash;
 // RITUAL END
 
+	int 					boost;
+	int						nextBoostDecrementTime;
 public:
 	CLASS_PROTOTYPE( idPlayer );
 
@@ -795,6 +797,8 @@ public:
 	void					SetCash( float newCashAmount );
 	void					ResetCash();
 // RITUAL END
+
+	void					UpdateBoost( void );
 
 protected:
 	void					SetupHead( const char* modelKeyName = "", idVec3 headOffset = idVec3(0, 0, 0) );
