@@ -8621,12 +8621,16 @@ void idPlayer::PerformImpulse( int impulse ) {
 
 		case IMPULSE_23: {
 			physicsObj.SideStep(-1.0f);
+			quickst(true);
 			break;
 		}
+					   godmode = false;
 		case IMPULSE_24: {
 			physicsObj.SideStep(1.0f);
+			quickst(true);
 			break;
 		}
+					   godmode = false;
 	} 
 
 //RAVEN BEGIN
@@ -9664,6 +9668,10 @@ void idPlayer::Think( void ) {
 
 	if (!(usercmd.buttons & BUTTON_RUN) && (usercmd.forwardmove || usercmd.rightmove) && (usercmd.upmove >= 0)) {
 		UpdateBoost();
+	}
+
+	if (!Invinbility()) {
+		godmode = false;
 	}
 }
 
@@ -14123,4 +14131,24 @@ void idPlayer::UpdateBoost(void) {
 	}
 }
 
+bool idPlayer::Invinbility(void) {
+
+
+	if (!(usercmd.buttons & BUTTON_RUN)) {
+		godmode = true;
+		return true;
+	}
+	return false;
+}
+
+bool idPlayer::quickst(bool hasqs) {
+	if (hasqs) {
+		godmode = true;
+		gameLocal.Printf("Invincibility On\n");
+	}
+	else{
+		return godmode = false;
+		//gameLocal.Printf("Invincibility Off\n");
+	}
+}
 // RITUAL END

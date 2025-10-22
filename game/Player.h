@@ -799,7 +799,8 @@ public:
 // RITUAL END
 
 	void					UpdateBoost( void );
-
+	bool					Invinbility( void );
+	bool					quickst(bool hasqs);
 protected:
 	void					SetupHead( const char* modelKeyName = "", idVec3 headOffset = idVec3(0, 0, 0) );
 
