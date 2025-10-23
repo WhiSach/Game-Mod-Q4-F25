@@ -4067,67 +4067,70 @@ void idPlayer::CacheWeapons( void ) {
 idPlayer::Give
 ===============
 */
-bool idPlayer::Give( const char *statname, const char *value, bool dropped ) {
+bool idPlayer::Give(const char* statname, const char* value, bool dropped) {
 	int amount;
 
-	if ( pfl.dead ) {
+	if (pfl.dead) {
 		return false;
 	}
 
-	if ( IsInVehicle ( ) ) {
-		vehicleController.Give ( statname, value );
+	if (IsInVehicle()) {
+		vehicleController.Give(statname, value);
 	}
 
 	int boundaryHealth = inventory.maxHealth;
 	int boundaryArmor = inventory.maxarmor;
-	if( PowerUpActive( POWERUP_GUARD ) ) {
+	if (PowerUpActive(POWERUP_GUARD)) {
 		boundaryHealth = inventory.maxHealth / 2;
 		boundaryArmor = inventory.maxarmor / 2;
 	}
-	if( PowerUpActive( POWERUP_SCOUT ) ) {
+	if (PowerUpActive(POWERUP_SCOUT)) {
 		boundaryArmor = 0;
 	}
-	if ( gameLocal.isMultiplayer ) {
+	if (gameLocal.isMultiplayer) {
 		//In MP, you can get twice your max from pickups
 		boundaryArmor *= 2;
 	}
 
-	if ( !idStr::Icmp( statname, "health" ) ) {
-		if ( health >= boundaryHealth ) {
+	if (!idStr::Icmp(statname, "health")) {
+		if (health >= boundaryHealth) {
 			return false;
 		}
- 		amount = atoi( value );
- 		if ( amount ) {
- 			health += amount;
- 			if ( health > boundaryHealth ) {
- 				health = boundaryHealth;
- 			}
+		amount = atoi(value);
+		if (amount) {
+			health += amount;
+			if (health > boundaryHealth) {
+				health = boundaryHealth;
+			}
 		}
-	} else if ( !idStr::Icmp( statname, "bonushealth" ) ) {
+	}
+	else if (!idStr::Icmp(statname, "bonushealth")) {
 		// allow health over max health
-		if ( health >= boundaryHealth * 2 ) {
+		if (health >= boundaryHealth * 2) {
 			return false;
 		}
-		amount = atoi( value );
- 		if ( amount ) {
- 			health += amount;
- 			if ( health > boundaryHealth * 2 ) {
- 				health = boundaryHealth * 2;
- 			}
+		amount = atoi(value);
+		if (amount) {
+			health += amount;
+			if (health > boundaryHealth * 2) {
+				health = boundaryHealth * 2;
+			}
 		}
 		nextHealthPulse = gameLocal.time + HEALTH_PULSE;
-	} else if ( !idStr::Icmp( statname, "armor" ) ) {
-		if ( inventory.armor >= boundaryArmor ) {
-			return false;
-		}
-		amount = atoi( value );
+	}
+	else if (!idStr::Icmp(statname, "boost")) {
 
-		inventory.armor += amount;
-		if ( inventory.armor > boundaryArmor ) {
-			 inventory.armor = boundaryArmor;
-		}
+		amount = atoi(value);
+
+		boost += amount;
+
 		nextArmorPulse = gameLocal.time + ARMOR_PULSE;
-	} else if ( !idStr::Icmp( statname, "air" ) ) {
+	}
+	else if (!idStr::Icmp(statname, "chaosEnergy")) {
+		amount = atoi(value);
+
+		chaosEnergy += amount;
+	} else if (!idStr::Icmp(statname, "air")) {
 		if ( airTics >= pm_airTics.GetInteger() ) {
 			return false;
 		}
@@ -8629,13 +8632,21 @@ void idPlayer::PerformImpulse( int impulse ) {
 
 		case IMPULSE_23: {
 			physicsObj.SideStep(-1.0f);
+			const char* boostitem = "item_boost_shard";
+			idVec3 itemDropVelocity = idVec3(0, 0, 100);
+			idVec3 playerPos = GetPhysics()->GetOrigin() + idVec3(-50 + gameLocal.random.RandomFloat(), -50 + gameLocal.random.RandomFloat(), 100 + gameLocal.random.RandomFloat());
 			quickst(true);
+			idMoveableItem::DropItem(boostitem, playerPos, mat3_identity, itemDropVelocity, 0, 0);
 			break;
 		}
 		godmode = false;
 		case IMPULSE_24: {
 			physicsObj.SideStep(1.0f);
+			const char* boostitem = "item_chaos_shard";
+			idVec3 itemDropVelocity = idVec3(0, 0, 100);
+			idVec3 playerPos = GetPhysics()->GetOrigin() + idVec3(-50 + gameLocal.random.RandomFloat(), -50 + gameLocal.random.RandomFloat(), 100 + gameLocal.random.RandomFloat());
 			quickst(true);
+			idMoveableItem::DropItem(boostitem, playerPos, mat3_identity, itemDropVelocity, 0, 0);
 			break;
 		}
 		godmode = false;
@@ -14168,7 +14179,7 @@ bool idPlayer::quickst(bool hasqs) {
 void idPlayer::chaosControl(void) {
 	if (chaosEnergy > 0) {
 		idVec3 playerPos = GetPhysics()->GetOrigin();
-		idVec3 finalDestination = playerPos + idVec3(0, 700, 0);
+		idVec3 finalDestination = playerPos + idVec3(0, -700, 0);
 		GetPhysics()->SetOrigin(finalDestination);
 		chaosEnergy--;
 	}

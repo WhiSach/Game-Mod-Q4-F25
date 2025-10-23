@@ -1358,11 +1358,11 @@ ID_INLINE bool TestHugeTranslation( trace_t &results, const idClipModel *mdl, co
 		results.c.point = start;
 		results.c.entityNum = ENTITYNUM_WORLD;
 
-		if ( mdl->GetEntity() ) {
-			gameLocal.Printf( "huge translation for clip model %d on entity %d '%s'\n", mdl->GetId(), mdl->GetEntity()->entityNumber, mdl->GetEntity()->GetName() );
-		} else {
-			gameLocal.Printf( "huge translation for clip model %d\n", mdl->GetId() );
-		}
+		//if ( mdl->GetEntity() ) {
+		//	gameLocal.Printf( "huge translation for clip model %d on entity %d '%s'\n", mdl->GetId(), mdl->GetEntity()->entityNumber, mdl->GetEntity()->GetName() );
+		//} else {
+		//	gameLocal.Printf( "huge translation for clip model %d\n", mdl->GetId() );
+		//}
 		return true;
 	}
 	return false;
