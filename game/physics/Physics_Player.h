@@ -113,6 +113,8 @@ public:	// common physics interface
 	void					WriteToSnapshot( idBitMsgDelta &msg ) const;
 	void					ReadFromSnapshot( const idBitMsgDelta &msg );
 
+	bool					CheckJump2(void);
+
 // RAVEN BEGIN
 // kfuller: Added
 	bool					IsNoclip( void ) const;
@@ -187,8 +189,6 @@ private:
 
 	float					Pm_Accelerate( void );
 	float					Pm_AirAccelerate( void );
-
-	bool					CheckJump2( void );
 };
 
 ID_INLINE bool idPhysics_Player::IsNoclip( void ) const {
