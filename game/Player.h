@@ -427,7 +427,6 @@ public:
 
 	int 					boost;
 	int						nextBoostDecrementTime;
-	int						chaosEnergy;
 public:
 	CLASS_PROTOTYPE( idPlayer );
 
@@ -802,7 +801,6 @@ public:
 	void					UpdateBoost( void );
 	bool					Invinbility( void );
 	bool					quickst(bool hasqs);
-	void					chaosControl(void);
 protected:
 	void					SetupHead( const char* modelKeyName = "", idVec3 headOffset = idVec3(0, 0, 0) );
 

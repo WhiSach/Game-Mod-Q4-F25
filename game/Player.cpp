@@ -1811,7 +1811,6 @@ void idPlayer::Spawn( void ) {
 	idStr		temp;
 	idBounds	bounds;
 	boost = 10;
-	chaosEnergy = 3;
 	if ( entityNumber >= MAX_CLIENTS ) {
 		gameLocal.Error( "entityNum > MAX_CLIENTS for player.  Player may only be spawned with a client." );
 	}
@@ -3445,7 +3444,6 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	
 	
 	_hud->SetStateString("pda_boost", va("%d", boost));
-	_hud->SetStateString("chaos_energy", va("%d", chaosEnergy));
 
 	_hud->StateChanged( gameLocal.time );
 }
@@ -8632,18 +8630,13 @@ void idPlayer::PerformImpulse( int impulse ) {
 			quickst(true);
 			break;
 		}
-		godmode = false;
+					   godmode = false;
 		case IMPULSE_24: {
 			physicsObj.SideStep(1.0f);
 			quickst(true);
 			break;
 		}
-		godmode = false;
-
-		case IMPULSE_25: {
-			chaosControl();
-			break;
-		}
+					   godmode = false;
 	} 
 
 //RAVEN BEGIN
@@ -14162,15 +14155,6 @@ bool idPlayer::quickst(bool hasqs) {
 	else{
 		return godmode = false;
 		//gameLocal.Printf("Invincibility Off\n");
-	}
-}
-
-void idPlayer::chaosControl(void) {
-	if (chaosEnergy > 0) {
-		idVec3 playerPos = GetPhysics()->GetOrigin();
-		idVec3 finalDestination = playerPos + idVec3(0, 700, 0);
-		GetPhysics()->SetOrigin(finalDestination);
-		chaosEnergy--;
 	}
 }
 // RITUAL END
