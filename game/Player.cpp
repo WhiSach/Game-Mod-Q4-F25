@@ -6579,7 +6579,7 @@ bool idPlayer::Collide( const trace_t &collision, const idVec3 &velocity ) {
 
 	if ( other ) {
 		if (other->IsType(idAI::GetClassType())) {
-			if (!(usercmd.buttons & BUTTON_RUN) || (physicsObj.CheckJump2())){
+			if (!(usercmd.buttons & BUTTON_RUN) || (physicsObj.CheckJump2() || (physicsObj.IsCrouching() ))){
 				idAI* enemy = static_cast<idAI*>(other);
 				enemy->Damage(this, this, GetEyePosition(), spawnArgs.GetString("def_damage"), 1.0f, 0);
 		}
