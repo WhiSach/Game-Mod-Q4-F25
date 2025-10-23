@@ -6575,9 +6575,13 @@ bool idPlayer::Collide( const trace_t &collision, const idVec3 &velocity ) {
 	if ( gameLocal.isClient && !other->IsType( idItem::GetClassType() ) ) {
 		return false;
 	}
-
+	
 
 	if ( other ) {
+		if (other->IsType(idAI::GetClassType())) {
+			idAI* enemy = static_cast<idAI*>(other);
+			enemy->Damage(this, this, GetEyePosition(), spawnArgs.GetString("def_damage"), 1.0f, 0);
+		}
 		other->Signal( SIG_TOUCH );
 		if ( !spectating ) {
 			if ( other->RespondsTo( EV_Touch ) ) {

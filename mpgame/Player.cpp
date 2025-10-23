@@ -6580,6 +6580,7 @@ idPlayer::Collide
 bool idPlayer::Collide( const trace_t &collision, const idVec3 &velocity ) {
 	idEntity *other;
 	other = gameLocal.entities[ collision.c.entityNum ];
+	gameLocal.Printf("DEBUG: idPlayer::Collide called! Hit entity #%d\n", collision.c.entityNum); // <--- ADD THIS LINE
 
 	// allow client-side prediction of item collisions for simple client effects
 	if ( gameLocal.isClient && !other->IsType( idItem::GetClassType() ) ) {

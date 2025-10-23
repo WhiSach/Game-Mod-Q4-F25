@@ -5149,3 +5149,8 @@ bool idAI::CheckDeathCausesMissionFailure( void )
 	}
 	return false;
 }
+
+void idAI::TakeDamage(int damage) {
+	health -= damage;
+	gameLocal.Printf("AI %s took %d damage, health now %d\n", GetName(), damage, health);
+}
