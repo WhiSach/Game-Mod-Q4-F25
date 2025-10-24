@@ -1811,6 +1811,7 @@ void idPlayer::Spawn( void ) {
 	idStr		temp;
 	idBounds	bounds;
 	boost = 10;
+	chaosEnergy = 3;
 	if ( entityNumber >= MAX_CLIENTS ) {
 		gameLocal.Error( "entityNum > MAX_CLIENTS for player.  Player may only be spawned with a client." );
 	}
