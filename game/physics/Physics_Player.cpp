@@ -677,7 +677,7 @@ void idPhysics_Player::AirMove( void ) {
 	// NOTE: enable stair checking while moving through the air in multiplayer to allow bunny hopping onto stairs
 	idPhysics_Player::SlideMove( true, gameLocal.isMultiplayer, false, false );
 
-	if (idPhysics_Player::CheckJump2()) {
+	if ((idPhysics_Player::CheckJump2()) && (jumpCount > 2))  {
 		// jumped away
 		idPhysics_Player::AirMove();
 		}
@@ -1131,6 +1131,7 @@ void idPhysics_Player::CheckGround( bool checkStuck ) {
 	// let the entity know about the collision
 	if ( self ) {
 		self->Collide( groundTrace, current.velocity );
+		jumpCount = 0;
 	}
 
 	if ( groundEntityPtr.GetEntity() ) {
@@ -1305,6 +1306,7 @@ bool idPhysics_Player::CheckJump( void ) {
 	addVelocity = 2.0f * maxJumpHeight * -gravityVector;
 	addVelocity *= idMath::Sqrt( addVelocity.Normalize() );
 	current.velocity += addVelocity;
+	jumpCount++;
 
 // RAVEN BEGIN
 // bdube: crouch slide, nick maggoire is awesome
@@ -2336,12 +2338,15 @@ bool idPhysics_Player::CheckJump2(void) {
 		return false;
 	}
 
+	if (jumpCount >= 2) {
+		return false;
+	}
 
 	groundPlane = false;		// jumping away
 	walking = false;
 	current.movementFlags |= PMF_JUMP_HELD | PMF_JUMPED;
 
-	addVelocity = 2 * (2.0f * maxJumpHeight * -gravityVector);
+	addVelocity = 4 * (2.0f * maxJumpHeight * -gravityVector);
 	addVelocity *= idMath::Sqrt(addVelocity.Normalize());
 	current.velocity += addVelocity;
 
@@ -2349,7 +2354,7 @@ bool idPhysics_Player::CheckJump2(void) {
 	// bdube: crouch slide, nick maggoire is awesome
 	current.crouchSlideTime = 0;
 	// RAVEN END
-
+	jumpCount++;
 	return true;
 }
 
