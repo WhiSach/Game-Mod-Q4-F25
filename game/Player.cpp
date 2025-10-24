@@ -4138,7 +4138,7 @@ bool idPlayer::Give(const char* statname, const char* value, bool dropped) {
 	else if (!idStr::Icmp(statname, "boostpowerup")) {
 		amount = atoi(value);
 		if (value) {
-			ActivateBoostPowerup(5000);
+			ActivateBoostPowerup(10000);
 		}
 	}
 	else if (!idStr::Icmp(statname, "air")) {

@@ -428,7 +428,7 @@ public:
 	int 					boost;
 	int						nextBoostDecrementTime;
 	int						chaosEnergy;
-	bool					shieldActive;
+	bool					shieldActive = false;
 	bool					boostPowerupActive = false;
 	int						boostPowerupEndTime;
 public:
