@@ -28,7 +28,7 @@ This is a custom Quake 4 modification inspired by *Sonic the Hedgehog*, bringing
 ### Command-line / Shortcut Method
 - Create a shortcut to `Quake4.exe`
 - Right-click it → **Properties**
-- In the **Target** field, add the following after the quotes:
+- In the **Target** field, add the following after the quotes: "...Quake 4\Quake4.exe" +set fs_game ModTest
 
 
 ---
