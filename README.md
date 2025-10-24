@@ -1,102 +1,83 @@
 # Quake 4 Mod: ModTest
 
-
-
-## Overview  
-
-ModTest is a custom Quake 4 modification inspired by Sonic the Hedgehog, bringing new movement mechanics, health systems, and world interactions.
-
-This project is currently a Work in Progress (WIP) and focuses on reimagining Quake 4 gameplay with Sonic-style features.
-
+## Overview
+**ModTest** is a custom Quake 4 modification inspired by *Sonic the Hedgehog*, bringing new high-speed movement mechanics and unique item pickups Quake 4 engine.
 
 
 ---
-
-
 
 ## Installation Instructions
 
+1. **Locate your Quake 4 directory**  
+   This is the folder containing `Quake4.exe`.
 
+2. **Copy the entire `ModTest` folder** into that directory.
 
-1. Locate your Quake 4 directory — this is the folder containing `Quake4.exe`.  
+3. In `q4base` there will be a pk001.pk4 folder. Copy that folder into `ModTest`
+  
+5. in `ModTest`, find the `gfx` folder and copy that into the pk4 file via 7zip or a similar application
 
-2. Copy the entire `ModTest` folder into that directory.  
+6. **Launch the mod** using one of the following methods:
 
-3\. Launch the mod in one of the following ways:
+### In-game Method
+- Run `Quake4.exe`
+- Go to the **Mods** menu
+- Select **ModTest**
+- Click **Load Mod**
 
-&nbsp;  - \*\*In-game method:\*\*  
-
-&nbsp;    Run `Quake4.exe` → go to the \*\*Mods\*\* menu → select \*\*ModTest\*\* → click \*\*Load Mod\*\*.  
-
-&nbsp;  - \*\*Command-line/shortcut method:\*\*  
-
-&nbsp;    Run Quake 4 with the following flag:  
-
-&nbsp;    ```
-
-&nbsp;    +set fs\_game ModTest
-
-&nbsp;    ```
-
-&nbsp;    \*(You can add this to a shortcut target or launch it from the in-game console.)\*
-
+### Command-line / Shortcut Method
+- Create a shortcut to `Quake4.exe`
+- Right-click it → **Properties**
+- In the **Target** field, add the following after the quotes:
 
 
 ---
 
+## Features & How to Play (WIP)
 
+### Core Systems
 
-## How to Play (WIP)
+- **Rings (Health System):**  
+Your health is represented by Rings. When you take damage, you lose Rings.
 
-
-
-### Currently Implemented
-
-**Sonic Rings / Health System:**  
-
-When the player takes damage, they drop rings (health shards) — just like Sonic losing rings when hit.
-
-
-
-\### In Progress
-
-\- \*\*Five Sonic Movement Abilities:\*\*  
-
-&nbsp; Custom mobility mechanics inspired by Sonic’s signature speed and agility.
-
-&nbsp; 
-
-\- \*\*Five Sonic Pickups:\*\*  
-
-&nbsp; Powerups and collectibles designed to enhance gameplay variety.
-
-&nbsp; 
-
-\- \*\*Sonic-Based Combat States:\*\*  
-
-&nbsp; Enemies will take damage \*\*only when Sonic is in a spin attack state\*\*; standard states won’t cause damage.
-
-&nbsp; 
-
-\- \*\*Five World Interactables:\*\*  
-
-&nbsp; Environmental objects such as:
-
-&nbsp; - Dash Panels  
-
-&nbsp; - Stop Panels  
-
-
+- **Boost & Chaos Resources:**  
+Picking up items fills your Boost and Chaos Energy meters, which power your special abilities.
 
 ---
+
+### Movement Abilities
+
+- **Boost (Hold SHIFT):**  
+Run faster, become invulnerable, and attack enemies by running into them. Depletes your Boost meter.
+
+- **Sidestep (Q / V):**  
+Quickly dash horizontally to dodge attacks and reposition.
+
+- **Chaos Control (V):**  
+Instantly teleport forward in the direction you’re facing. Consumes Chaos Energy.
+
+- **Multi-Jump (SPACE):**  
+Jump multiple times while airborne for extended mobility.
+
+- **Ground Pound (Hold C):**  
+Slam down from mid-air for a fast, powerful impact.
+
+---
+
+### Items & Pickups
+
+- **Rings:** Restore health and increase your Ring counter.  
+- **Chaos Shards:** Increase Chaos Energy used for Chaos Control.  
+- **Boost Up:** Adds to your Boost meter.  
+- **Shield Bubble:** Grants one-hit invulnerability. Breaks upon taking damage.  
+- **Boost Powerup:** Provides temporary infinite Boost for a limited duration.
 
 
 
 ## Credits
 
-Developed by: Sachin Arcot for IT266 @ NJIT
+**Developed by:**  
+Sachin Arcot for *IT266 @ NJIT*
 
-Inspired by: \*Sonic the Hedgehog\* and \*Quake 4\*  
-
-
-
+**Inspired by:**  
+*Sonic the Hedgehog* and *Quake 4*
