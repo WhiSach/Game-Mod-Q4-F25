@@ -33,7 +33,7 @@ This is a custom Quake 4 modification inspired by *Sonic the Hedgehog*, bringing
 
 ---
 
-## Features & How to Play (WIP)
+## Features & How to Play
 
 ### Core Systems
 
