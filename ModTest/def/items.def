@@ -442,3 +442,101 @@ entityDef item_armor_large_sp
 	"friction"					"1"
 	"bouncyness"				"0.05"
 }
+
+entityDef item_boost
+{
+	"inherit"				"item_default"
+	"editor_color"			".3 .3 1"
+	"editor_mins"			"-16 -16 0"
+	"editor_maxs"			"16 16 32"
+
+	"spawnclass"			"idItem"
+	"model"					"models/items/armor/armor.lwo"
+	"size"					"32 32 32"
+	"editor_copy100"		"inv_item"
+	"snd_acquire"			"pickup_armor"
+	"respawn"				"25"
+	"inv_item"				"2"
+	"inv_icon"				"gfx/guis/hud/icons/item_armor.tga"
+	"editor_ignore"			"1"
+}
+
+entityDef item_boost_shard
+{
+	"inherit"				"item_boost"
+	"editor_usage"			"#str_130000"
+	"inv_name"				"#str_130000"
+	"inv_boost"				"1"
+	"model"					"models/items/armor/shard.lwo"
+	"snd_acquire"			"pickup_armor_shard"
+	"editor_ignore"			"0"
+}
+
+entityDef item_chaos_energy
+{
+	"inherit"				"item_default"
+	"editor_color"			".3 .3 1"
+	"editor_mins"			"-16 -16 0"
+	"editor_maxs"			"16 16 32"
+
+	"spawnclass"			"idItem"
+	"model"					"models/items/armor/armor.lwo"
+	"size"					"32 32 32"
+	"editor_copy100"		"inv_item"
+	"snd_acquire"			"pickup_armor"
+	"respawn"				"25"
+	"inv_item"				"2"
+	"inv_icon"				"gfx/guis/hud/icons/item_armor.tga"
+	"editor_ignore"			"1"
+}
+
+entityDef item_chaos_shard
+{
+	"inherit"				"item_chaos_energy"
+	"editor_usage"			"#str_130001"
+	"inv_name"				"#str_130001"
+	"inv_chaosEnergy"		"1"
+	"model"					"models/items/armor/shard.lwo"
+	"snd_acquire"			"pickup_armor_shard"
+	"editor_ignore"			"0"
+}
+
+entityDef item_shield
+{
+	"inherit"				"item_default"
+	"editor_color"			".3 .3 1"
+	"editor_mins"			"-16 -16 0"
+	"editor_maxs"			"16 16 32"
+
+	"spawnclass"			"idItem"
+	"model"					"models/items/armor/armor.lwo"
+	"size"					"32 32 32"
+	"editor_copy100"		"inv_item"
+	"snd_acquire"			"pickup_armor"
+	"respawn"				"25"
+	"inv_item"				"2"
+	"inv_icon"				"gfx/guis/hud/icons/item_armor.tga"
+	"editor_ignore"			"1"
+}
+
+entityDef item_shield_bubble
+{
+	"inherit"				"item_shield"
+	"editor_usage"			"#str_130003"
+	"inv_name"				"#str_130003"
+	"inv_shield"			"1"
+	"model"					"models/items/armor/armor.lwo"
+	"snd_acquire"			"pickup_armor_shard"
+	"editor_ignore"			"0"
+}
+
+entityDef item_boost_powerup
+{
+	"inherit"				"item_boost"
+	"editor_usage"			"#str_130005"
+	"inv_name"				"#str_130005"
+	"inv_boostpowerup"		"1"
+	"model"					"models/items/armor/shard.lwo"
+	"snd_acquire"			"pickup_armor_shard"
+	"editor_ignore"			"0"
+}

@@ -698,7 +698,7 @@ entityDef player_marine
 	"pm_jumpheight"						"48"
 	"pm_stepsize"						"16"
 	"pm_speed"						"300"  	//OG speed was 160
-	"pm_walkspeed"						"80"
+	"pm_walkspeed"						"700"
 	"pm_crouchspeed"					"80"
 	"pm_noclipspeed"					"270"	
 	"pm_minviewpitch"					"-89"	// looking up
@@ -806,6 +806,8 @@ entityDef player_marine
 	"no_fall_delta"						"7" 
 	
 	"def_playerView"					"playerView_marine"
+
+	"def_damage"						"damage_collision"
 
 }
 
@@ -1472,4 +1474,12 @@ entityDef player_viewweapon {
 entityDef player_animatedentity {
 	"spawnclass"				"idAnimatedEntity"
 	"networkSync"				"1"
+}
+
+entityDef damage_collision
+{
+	"damage"					"100"
+	"push"						"45000"
+	"gib"						"1"
+
 }

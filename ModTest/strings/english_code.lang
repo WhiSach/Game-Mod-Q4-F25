@@ -737,5 +737,9 @@
 	"#str_123008"	"all"
 	"#str_123009"	"Tickrate"
 	
+	"#str_130000"	"Boost Up"
+	"#str_130001"	"Chaos Energy"
+	"#str_130003"	"Shield Bubble"
+	"#str_130005"	"Boost Power-Up"
 }
 

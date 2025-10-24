@@ -568,6 +568,66 @@ windowDef Desktop
 			textscale	0.3
 		}
 	}
+	windowDef boost_indicator
+	{
+		rect	476,414,100,20
+		visible	1
+		forecolor	1, 1, 1, 1
+		text	"Boost: "
+		textfont	"fonts/lowpixel"
+		textscale	0.3
+		textalign	0
+		windowDef boost_value
+		{
+			rect	50, 0, 50, 20
+			visible	1
+			forecolor	1,1,1,1
+			text	"gui::pda_boost"
+			::	pda_boost
+			textfont	"fonts/lowpixel"
+			textscale	0.3
+		}
+	}
+	windowDef chaosenergy_indicator
+	{
+		rect	473,433,100,20
+		visible	1
+		forecolor	1, 1, 1, 1
+		text	"Chaos Energy: "
+		textfont	"fonts/lowpixel"
+		textscale	0.3
+		textalign	0
+		windowDef chaosenergy_value
+		{
+			rect	50, 0, 50, 20
+			visible	1
+			forecolor	1,1,1,1
+			text	"gui::chaos_energy"
+			::	chaos_energy
+			textfont	"fonts/lowpixel"
+			textscale	0.3
+		}
+	}
+	windowDef i_frames
+	{
+		rect	0,2,100,20
+		visible	1
+		forecolor	1, 1, 1, 1
+		text	"Invincible: "
+		textfont	"fonts/lowpixel"
+		textscale	0.3
+		textalign	0
+		windowDef is_invincble
+		{
+			rect	81,3,50,20
+			visible	1
+			forecolor	1,1,1,1
+			text	"gui::player_god"
+			::	player_god
+			textfont	"fonts/lowpixel"
+			textscale	0.3
+		}
+	}
 	windowDef p_health
 	{
 		rect	0,0,640,480

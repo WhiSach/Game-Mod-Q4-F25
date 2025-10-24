@@ -5,7 +5,7 @@
 {
 	"#str_200000"	"NEW GAME"
 	"#str_200001"	"LOAD GAME"
-	"#str_200002"	"MULTIPLAYER"
+	"#str_200002"	"HOW TO PLAY"
 	"#str_200003"	"SAVE GAME"
 	"#str_200004"	"QUIT CURRENT GAME"
 	"#str_200005"	"RETURN TO GAME"
@@ -26,8 +26,8 @@
 	"#str_200020"	"START GAME"
 	"#str_200021"	"DELETE GAME"
 	"#str_200022"	"INSTANT ACTION"
-	"#str_200023"	"GAME BROWSER"
-	"#str_200024"	"FRIENDS LIST"
+	"#str_200023"	"MOVEMENT"
+	"#str_200024"	"ITEMS"
 	"#str_200025"	"JOIN IP ADDRESS"
 	"#str_200026"	"CREATE SERVER"
 	"#str_200027"	"MULTIPLAYER - GAME BROWSER"
@@ -1033,7 +1033,7 @@
 	"#str_201043"	""
 	"#str_201044"	"Shuffle Teams"
 	"#str_202000"	""
-	"#str_202001"	""
+	"#str_202001"	"Boost (Hold SHIFT)"
 	"#str_202002"	""
 	"#str_202003"	""
 	"#str_202004"	""
@@ -1101,5 +1101,6 @@
 	"#str_223007"	"Gun Position"
 	"#str_223008"	"Right;Centered;Lower Right"
 	"#str_223009"	"Enable detailed sky"
+	
 
 }

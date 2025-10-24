@@ -2000,1220 +2000,223 @@ windowDef Desktop
 		{
 			rect	0,0,640,480
 			visible	0
-			windowDef mp_browse_hline
+			windowDef p_howtoplay_heading
 			{
-				rect	21,283,593,5
 				visible	1
-				background	"gfx/guis/mainmenu/horiz_line2"
-				matcolor	0.545,0.588,0.294,0.26
+				textfont	"fonts/default"
+				textscale	0.3
+				forecolor	1, 0.6, 0.2, 1
+				textalign	0
 			}
-			windowDef mp_browse_loadbarbg
+			windowDef p_howtoplay_body
 			{
-				rect	21,312,593,16
 				visible	1
-				background	"gfx/guis/mainmenu/load_bar3"
-				matcolor	0.878,0.423,0,0.3
-			}
-			windowDef mp_browse_p_loadbar
-			{
-				rect	21,312,( "gui::loadPct" * 593 ),16
-				visible	1
-				windowDef mp_browse_loadbar
-				{
-					rect	0,0,593,16
-					visible	1
-					background	"gfx/guis/mainmenu/load_bar3"
-					matcolor	0.878,0.423,0,0.5
-				}
-			}
-			windowDef mp_browse_t_loadnotice
-			{
-				rect	41,311,569,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"gui::loadNotice"
-				textscale	0.22
-				font	"fonts/lowpixel"
-			}
-			windowDef mp_browse_clearSort
-			{
-				rect	434,288,181,24
-				visible	1
-				background	"gfx/guis/mainmenu/b6_light"
-				matcolor	0.545,0.588,0.294,0.4
-			}
-			windowDef mp_browse_clearSort_corner
-			{
-				rect	439,293,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0.4
-			}
-			windowDef mp_browse_t_clearSort
-			{
-				rect	450,289,162,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200951"
+				textfont	"fonts/default"
 				textscale	0.25
-				font	"fonts/marine"
-				textspacing	-1
+				forecolor	1, 1, 1, 1
+				textalign	0
+				textaligny	-1
+				wraptext	1
 			}
-			windowDef mp_browse_sort_corner
+			windowDef p_howtoplay_title
 			{
-				rect	28,293,12,12
 				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.878,0.423,0,0.5
-				matscaley	-1
+				rect	40, 30, 560, 30
+				text	"HOW-TO-PLAY - MOVEMENT"
+				textfont	"fonts/default"
+				textscale	0.5
+				textalign	1
+				forecolor	1, 1, 1, 1
 			}
-			windowDef mp_browse_t_sortnotice
+			windowDef p_howtoplay_std_head
 			{
-				rect	41,291,392,16
+				p_howtoplay_heading	{
+				rect	34,76,270,20
+				text	"Standard Moves"
 				visible	1
-				forecolor	1,1,1,0.8
-				text	"gui::sortNotice"
-				textscale	0.2
-				font	"fonts/lowpixel"
 			}
-			listDef mp_browse_serverlist
+			windowDef p_howtoplay_std_body
 			{
-				rect	23,83,604,202
+				p_howtoplay_body	{
+				rect	33,99,270,68
+				text	"W, A, S, D: Move\nSPACE: Jump\nCTRL / C: Crouch"
 				visible	1
-				backcolor	0,0,0,0
-				scrollbar	1
-				listname	serverlist
-				forecolor	1,1,1,0.68
-				textscale	0.22
-				font	"fonts/lowpixel"
-				tabstops	"5,26,47,68,89,331,378,399,451,522,590"
-				tabaligns	"1,1,1,1,0,0,1"
-				tabTextScales	".3,.3,.3,.3,.22,.22,.3"
-				tabValigns	"1,1,1,1,0,0,1"
-				itemheight	18
-				matcolor	1,1,1,0.4
-				backgroundHover	"gfx/guis/mainmenu/bg_hover2"
-				backgroundFocus	"gfx/guis/mainmenu/bg_focus2"
-				backgroundLine	"gfx/guis/mainmenu/bg_line2"
-				backgroundGreyed	"gfx/guis/mainmenu/bg_grey2"
+			}
+			windowDef p_howtoplay_boost_head
+			{
+				p_howtoplay_heading	{
+				rect	50, 175, 270, 20
+				text	"#str_202001"
+				visible	1
+			}
+			windowDef p_howtoplay_boost_body
+			{
+				p_howtoplay_body	{
+				rect	6,200,310,109
+				text	"Hold SHIFT while running.\n Grants faster movement,\n invulnerability, and damages enemies\n on contact. Depletes boost meter."
+				visible	1
+			}
+			windowDef p_howtoplay_step_head
+			{
+				p_howtoplay_heading	{
+				rect	22,319,270,20
+				text	"Sidestep (Q / V)"
+				visible	1
+			}
+			windowDef p_howtoplay_step_body
+			{
+				p_howtoplay_body	{
+				rect	19,342,270,40
+				text	"A horizontal dash that lets you dodge attacks and move horizontally via a quickstep."
+				visible	1
+			}
+			windowDef p_howtoplay_chaos_head
+			{
+				p_howtoplay_heading	{
+				rect	320, 90, 270, 20
+				text	"Chaos Control (V)"
+			}
+			windowDef p_howtoplay_chaos_body
+			{
+				p_howtoplay_body	{
+				rect	320, 115, 270, 40
+				text	"Move forwards in the direction you are looking. Depletes chaos energy."
+			}
+			windowDef p_howtoplay_mjump_head
+			{
+				p_howtoplay_heading	{
+				rect	320, 175, 270, 20
+				text	"Multi-Jump (SPACE)"
+			}
+			windowDef p_howtoplay_mjump_body
+			{
+				p_howtoplay_body	{
+				rect	320, 200, 270, 40
+				text	"Jump in the air multiple times and deal damage."
+			}
+			windowDef p_howtoplay_pound_head
+			{
+				p_howtoplay_heading	{
+				rect	320, 260, 270, 20
+				text	"Ground Pound (Hold C)"
+			}
+			windowDef p_howtoplay_pound_body
+			{
+				p_howtoplay_body	{
+				rect	320, 285, 270, 40
+				text	"Hold C while in the air to perform a ground pound."
+			}
+			windowDef p_howtoplay_back
+			{
+				visible	1
+				rect	220, 430, 200, 24
+				text	"BACK"
+				textfont	"fonts/default"
+				textscale	0.4
+				textalign	1
+				forecolor	1, 1, 1, 1
+				onLeave	{
+				set	"forecolor"
+				1	1
+				;	}
 
-				onAction {
-					set "cmd" "play main_menu_selection ; click_serverList" ;
-				}
+				onEnter { set "forecolor" 1 0.5 0 1; }
 
-				onEnter {
-					set "cmd" "connect ; play main_menu_selection" ;
-				}
+				onAction { close "p_mp_browse"; }
 
-			}
-			windowDef mp_browse_sortFavorite
-			{
-				rect	26,87,21,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef mp_browse_sortLocked
-			{
-				rect	47,87,21,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef mp_browse_sortDed
-			{
-				rect	68,87,21,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef mp_browse_sortPb
-			{
-				rect	89,87,21,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef mp_browse_sortServer
-			{
-				rect	110,87,244,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef mp_browse_sortPing
-			{
-				rect	354,87,47,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef mp_browse_sortRepeater
-			{
-				rect	401,87,19,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef mp_browse_sortPlayers
-			{
-				rect	422,87,53,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef mp_browse_sortGametype
-			{
-				rect	474,87,71,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef mp_browse_sortMap
-			{
-				rect	545,87,67,197
-				visible	1
-				backcolor	0.607,0.647,0.270,0
-			}
-			windowDef t_mp_browse_title
-			{
-				rect	39,19,314,16
-				visible	1
-				forecolor	1,1,1,0
-				text	"#str_200027"
-				textscale	.25
-				font	"fonts/marine"
-			}
-			windowDef mp_browse_header
-			{
-				rect	22,54,587,37
-				visible	1
-				background	"gfx/guis/mainmenu/header"
-				matcolor	0.545,0.588,0.294,0.6
-			}
-			windowDef mp_browse_icon_favorite
-			{
-				rect	27,68,19,19
-				visible	1
-				background	"gfx/guis/mainmenu/icon_favorite"
-				matcolor	1,1,1,1
-			}
-			windowDef mp_browse_icon_locked
-			{
-				rect	48,68,19,19
-				visible	1
-				background	"gfx/guis/mainmenu/icon_locked"
-				matcolor	1,1,1,1
-			}
-			windowDef mp_browse_icon_dedserver
-			{
-				rect	69,68,19,19
-				visible	1
-				background	"gfx/guis/mainmenu/icon_dedserver"
-				matcolor	1,1,1,1
-			}
-			windowDef mp_browse_icon_pb
-			{
-				rect	90,68,19,19
-				visible	1
-				background	"gfx/guis/mainmenu/icon_pb"
-				matcolor	1,1,1,1
-			}
-			windowDef mp_browse_b1
-			{
-				rect	19,325,208,52
-				visible	1
-				background	"gfx/guis/mainmenu/b2_dark"
-				matcolor	1,1,1,0.4
-			}
-			windowDef mp_browse_b2
-			{
-				rect	19,353,208,51
-				visible	1
-				background	"gfx/guis/mainmenu/b2_dark"
-				matcolor	1,1,1,0.4
-			}
-			windowDef mp_browse_b3
-			{
-				rect	19,381,208,51
-				visible	1
-				background	"gfx/guis/mainmenu/b2_dark"
-				matcolor	1,1,1,0.4
-			}
-			windowDef mp_browse_b4
-			{
-				rect	385,325,208,51
-				visible	1
-				background	"gfx/guis/mainmenu/b2_dark"
-				matcolor	1,1,1,0.4
-			}
-			windowDef mp_browse_b5
-			{
-				rect	19,409,208,51
-				visible	1
-				background	"gfx/guis/mainmenu/b2_dark"
-				matcolor	1,1,1,0.4
-			}
-			windowDef mp_browse_b6
-			{
-				rect	385,388,208,51
-				visible	1
-				background	"gfx/guis/mainmenu/b2_dark"
-				matcolor	1,1,1,0.4
-			}
-			windowDef mp_browse_t_b1
-			{
-				rect	40,337,193,23
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200028"
-				textscale	.31
-				font	"fonts/marine"
-				textspacing	-1
-			}
-			windowDef mp_browse_t_b2
-			{
-				rect	40,365,219,23
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200029"
-				textscale	.31
-				font	"fonts/marine"
-				textspacing	-1
-			}
-			windowDef mp_browse_t_b3
-			{
-				rect	40,393,193,23
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200025"
-				textscale	.31
-				font	"fonts/marine"
-				textspacing	-1
-			}
-			windowDef mp_browse_joinserver_arrow
-			{
-				rect	397,337,24,24
-				visible	1
-				background	"gfx/guis/mainmenu/createserver_arrow"
-				matcolor	1,0.745,0.137,0.8
-			}
-			windowDef mp_browse_t_b4
-			{
-				rect	422,337,210,23
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200031"
-				textscale	.31
-				font	"fonts/marine"
-				textspacing	-1
-			}
-			windowDef mp_browse_t_b5
-			{
-				rect	40,421,193,23
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200182"
-				textscale	.31
-				font	"fonts/marine"
-				textspacing	-1
-			}
-			windowDef mp_browse_t_b6
-			{
-				rect	406,400,226,23
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"gui::favoriteStatus"
-				textscale	.31
-				font	"fonts/marine"
-				textspacing	-1
-			}
-			windowDef mp_browse_b1_corner
-			{
-				rect	28,344,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0.4
-			}
-			windowDef mp_browse_b2_corner
-			{
-				rect	28,372,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0.4
-			}
-			windowDef mp_browse_b3_corner
-			{
-				rect	28,400,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0.4
-			}
-			windowDef mp_browse_b5_corner
-			{
-				rect	28,428,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0.4
-			}
-			windowDef mp_browse_b6_corner
-			{
-				rect	394,407,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0.4
-			}
-			windowDef mp_browse_mod
-			{
-				rect	27,46,64,16
-				visible	1
-				forecolor	1,1,1,0.6
-				text	"#str_223005"
-				textscale	0.22
-				font	"fonts/marine"
-				textalign	2
-			}
-			windowDef mp_browse_filter_mod
-			{
-				rect	107,46,162,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"gui::filterMod"
-				textscale	0.23
-				font	"fonts/marine"
-			}
-			windowDef mp_browse_filter_prev_mod_bg
-			{
-				rect	88,46,22,16
-				visible	1
-				background	"gfx/guis/common/32_sqsolid"
-				matcolor	0,0,0,0.4
-				rotate	90
-			}
-			windowDef mp_browse_filter_prev_mod
-			{
-				rect	91,46,16,16
-				visible	1
-				background	"gfx/guis/common/arrow6"
-				matcolor	1,0.501,0,0.8
-				rotate	-90
-			}
-			windowDef mp_browse_filter_next_mod_bg
-			{
-				rect	266,46,22,16
-				visible	1
-				background	"gfx/guis/common/32_sqsolid"
-				matcolor	0,0,0,0.4
-				rotate	90
-			}
-			windowDef mp_browse_filter_next_mod
-			{
-				rect	269,46,16,16
-				visible	1
-				background	"gfx/guis/common/arrow6"
-				matcolor	1,0.501,0,0.8
-				rotate	90
-			}
-			windowDef mp_browse_source
-			{
-				rect	324,46,106,16
-				visible	1
-				forecolor	1,1,1,0.6
-				text	"#str_200032"
-				textscale	0.22
-				font	"fonts/marine"
-				textalign	2
-			}
-			windowDef mp_browse_internet
-			{
-				rect	455,46,96,16
-				visible	1
-				forecolor	0.890,0.537,0,1
-				text	"#str_200033"
-				textscale	0.23
-				font	"fonts/marine"
-			}
-			windowDef mp_browse_lan
-			{
-				rect	563,46,50,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200034"
-				textscale	0.22
-				font	"fonts/marine"
-			}
-			windowDef mp_browse_internet_box
-			{
-				rect	442,50,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/box"
-				matcolor	1,1,1,0.6
-			}
-			windowDef mp_browse_internet_boxcheck
-			{
-				rect	442,50,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/box_check"
-				matcolor	0.345,0.415,0.0313,1
-			}
-			windowDef mp_browse_lan_box
-			{
-				rect	552,50,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/box"
-				matcolor	1,1,1,0.6
-			}
-			windowDef mp_browse_lan_boxcheck
-			{
-				rect	552,50,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/box_check"
-				matcolor	0.345,0.415,0.0313,0
-			}
-			windowDef mp_browse_servername
-			{
-				rect	112,70,242,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200036"
-				textscale	0.2
-				font	"fonts/lowpixel"
-				textspacing	-1
-			}
-			windowDef mp_browse_ping
-			{
-				rect	354,70,47,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200037"
-				textscale	0.2
-				font	"fonts/lowpixel"
-				textspacing	-1
-			}
-			windowDef mp_browse_icon_repeater
-			{
-				rect	401,68,19,19
-				visible	1
-				background	"gfx/guis/mainmenu/icon_repeater"
-				matcolor	1,1,1,1
-			}
-			windowDef mp_browse_players
-			{
-				rect	422,70,53,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200038"
-				textscale	0.2
-				font	"fonts/lowpixel"
-				textspacing	-1
-			}
-			windowDef mp_browse_gametype
-			{
-				rect	474,70,71,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200039"
-				textscale	0.2
-				font	"fonts/lowpixel"
-				textspacing	-1
-			}
-			windowDef mp_browse_map
-			{
-				rect	545,70,67,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200040"
-				textscale	0.2
-				font	"fonts/lowpixel"
-				textspacing	-1
-			}
-			windowDef mp_browse_info_mapshot
-			{
-				rect	260,337,116,88
-				visible	1
-				background	"gui::browser_levelshot"
-				matcolor	1,1,1,1
-				bordersize	1
-				bordercolor	0.254,0.274,0.141,1
-				backcolor	0,0,0,0.6
-			}
-			windowDef mp_browse_back
-			{
-				rect	532,441,109,30
-				visible	1
-				background	"gfx/guis/mainmenu/b4_light"
-				matcolor	0.545,0.588,0.294,0
-			}
-			windowDef mp_browse_back_corner
-			{
-				rect	542,449,11,11
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0
-			}
-			windowDef mp_browse_t_back
-			{
-				rect	552,443,88,17
-				visible	1
-				forecolor	1,1,1,0
-				text	"#str_200018"
-				textscale	.28
-				font	"fonts/marine"
-			}
-			windowDef mp_browse_currmap
-			{
-				rect	266,427,102,16
-				visible	1
-				forecolor	1,1,1,0.4
-				text	"#str_200927"
-				textscale	0.18
-				font	"fonts/lowpixel"
-				textspacing	-1
-			}
-			windowDef mp_browse_currmap_corner
-			{
-				rect	257,428,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0.4
-			}
-			windowDef mp_browse_uparrow_bg
-			{
-				rect	611,68,22,16
-				visible	1
-				background	"gfx/guis/common/32_sqsolid"
-				matcolor	0,0,0,0.4
-			}
-			windowDef mp_browse_uparrow
-			{
-				rect	614,68,16,16
-				visible	1
-				background	"gfx/guis/common/arrow6"
-				matcolor	1,0.501,0,0.8
-				matscaley	-1
-			}
-			windowDef mp_browse_dnarrow_bg
-			{
-				rect	611,288,22,16
-				visible	1
-				background	"gfx/guis/common/32_sqsolid"
-				matcolor	0,0,0,0.4
-			}
-			windowDef mp_browse_dnarrow
-			{
-				rect	614,287,16,16
-				visible	1
-				background	"gfx/guis/common/arrow6"
-				matcolor	1,0.501,0,0.8
-			}
-			windowDef p_mp_browse_tooltip
-			{
-				rect	"desktop::tooltip_x" + 4,"desktop::tooltip_y" + 4,"desktop::tooltip_w","desktop::tooltip_h"
-				visible	("gui::serverinfo_visible" == 1 && "desktop::curr" != 16 && "desktop::curr" != 29)
-				windowDef mp_browse_ttip_top
-				{
-					rect	0,0,270,16
-					visible	1
-					background	"gfx/guis/mainmenu/tooltip_edge"
-					matcolor	1,1,1,.94
-				}
-				windowDef mp_browse_ttip_mid
-				{
-					rect	0,16,270,154
-					visible	1
-					background	"gfx/guis/mainmenu/tooltip_mid"
-					matcolor	1,1,1,.94
-				}
-				windowDef mp_browse_ttip_btm
-				{
-					rect	0,170,270,16
-					visible	1
-					background	"gfx/guis/mainmenu/tooltip_edge"
-					matcolor	1,1,1,.94
-					matscalex	-1
-					matscaley	-1
-				}
-				windowDef mp_browse_ttip_ipaddress
-				{
-					rect	6,5,244,16
-					visible	1
-					forecolor	1,1,1,1
-					text	"gui::server_tooltip_ip"
-					textscale	0.2
-					font	"fonts/lowpixel"
-					textspacing	-1
-				}
-				windowDef mp_browse_ttip_players
-				{
-					rect	7,27,105,14
-					visible	1
-					forecolor	1,1,1,0.4
-					text	"#str_200038"
-					textscale	.16
-					font	"fonts/lowpixel"
-				}
-				windowDef mp_browse_ttip_settings
-				{
-					rect	92,27,140,14
-					visible	1
-					forecolor	1,1,1,0.4
-					text	"#str_200928"
-					textscale	.16
-					font	"fonts/lowpixel"
-				}
-				listDef mp_browse_ttip_list_players
-				{
-					rect	7,40,80,139
-					visible	1
-					backcolor	0,0,0,0
-					scrollbar	0
-					listname	server_tooltip_playerlist
-					forecolor	1,1,1,0.8
-					textscale	0.18
-					font	"fonts/profont"
-					itemheight	12
-					backgroundHover	"gfx/effects/particles_shapes/blank"
-					backgroundFocus	"gfx/effects/particles_shapes/blank"
-					backgroundLine	"gfx/effects/particles_shapes/blank"
-					text	""
-				}
-				listDef mp_browse_ttip_list_settings
-				{
-					rect	92,40,172,139
-					visible	1
-					backcolor	0,0,0,0
-					scrollbar	0
-					listname	server_tooltip_settingslist
-					forecolor	1,1,1,0.8
-					textscale	0.18
-					font	"fonts/profont"
-					itemheight	12
-					matcolor	1,1,1,0.4
-					backgroundHover	"gfx/effects/particles_shapes/blank"
-					backgroundFocus	"gfx/effects/particles_shapes/blank"
-					backgroundLine	"gfx/effects/particles_shapes/blank"
-					text	""
-				}
-				windowDef mp_browse_ttip_vline1
-				{
-					rect	86,29,6,150
-					visible	1
-					background	"gfx/guis/mainmenu/vert_line2"
-					matcolor	0.545,0.588,0.294,0.32
-				}
-				windowDef mp_browse_ttip_hline1
-				{
-					rect	7,21,245,6
-					visible	1
-					background	"gfx/guis/mainmenu/horiz_line2"
-					matcolor	0.545,0.588,0.294,0.32
-				}
-			}
-			windowDef p_mp_browse_sortTooltip
-			{
-				rect	"gui::mousex" + 8,"gui::mousey" + 10,219,26
-				visible	0
-				windowDef mp_browse_sttip_top
-				{
-					rect	0,0,218,13
-					visible	1
-					background	"gfx/guis/mainmenu/tooltip_edge"
-					matcolor	1,1,1,0
-				}
-				windowDef mp_browse_sttip_btm
-				{
-					rect	0,12,218,13
-					visible	1
-					background	"gfx/guis/mainmenu/tooltip_edge"
-					matcolor	1,1,1,0
-					matscalex	-1
-					matscaley	-1
-				}
-				windowDef mp_browse_sttip_value
-				{
-					rect	6,5,201,16
-					visible	1
-					forecolor	1,1,1,0
-					text	"#str_200931"
-					textscale	0.2
-					font	"fonts/lowpixel"
-					textspacing	-1
-				}
-			}
-			windowDef pop_p_find_playerClan
-			{
-				rect	0,0,640,480
-				visible	0
-				windowDef pop_fpc_black
-				{
-					rect	0,0,640,480
-					visible	1
-					backcolor	0,0,0,0
-				}
-				windowDef pop_fpc_bg
-				{
-					rect	160,33,320,400
-					visible	1
-					background	"gfx/guis/mainmenu/popup_bg"
-					matcolor	0,0,0,1
-				}
-				windowDef pop_fpc_top
-				{
-					rect	160,174,319,19
-					visible	1
-					background	"gfx/guis/mainmenu/popup_top"
-					matcolor	0,0,0,0
-				}
-				windowDef pop_fpc_mid
-				{
-					rect	160,193,319,79
-					visible	1
-					background	"gfx/guis/mainmenu/popup_mid"
-					matcolor	0,0,0,0
-				}
-				windowDef pop_fpc_btm
-				{
-					rect	160,272,319,38
-					visible	1
-					background	"gfx/guis/mainmenu/popup_btm"
-					matcolor	0,0,0,0
-				}
-				windowDef pop_find_playerClan
-				{
-					rect	0,0,640,480
-					visible	0
-					windowDef pop_fpc_title
-					{
-						rect	180,169,210,17
-						visible	1
-						forecolor	1,1,1,0.8
-						text	"#str_200182"
-						textscale	.28
-						font	"fonts/marine"
-						textspacing	-1
-					}
-					windowDef pop_fpc_b1
-					{
-						rect	182,220,277,34
-						visible	1
-						background	"gfx/guis/mainmenu/b6_light"
-						matcolor	0.545,0.588,0.294,0.4
-					}
-					editDef pop_fpc_name
-					{
-						rect	201,224,251,20
-						visible	1
-						forecolor	1,1,1,0.8
-						text	"gui::playerclan_search"
-						textscale	.28
-						font	"fonts/lowpixel"
-						textspacing	-1
-						maxchars	99
-
-						onEnter {
-							set "cmd" "play main_menu_selection ; playerClanSearch" ;
-						}
-
-					}
-					windowDef pop_fpc_searchfor
-					{
-						rect	154,194,121,16
-						visible	1
-						forecolor	1,1,1,0.6
-						text	"#str_200254"
-						textscale	0.22
-						font	"fonts/marine"
-						textalign	2
-					}
-					windowDef pop_fpc_player
-					{
-						rect	302,194,89,16
-						visible	1
-						forecolor	1,1,1,0.8
-						text	"#str_200255"
-						textscale	0.22
-						font	"fonts/marine"
-					}
-					windowDef pop_fpc_clan
-					{
-						rect	404,194,64,16
-						visible	1
-						forecolor	1,1,1,0.8
-						text	"#str_200256"
-						textscale	0.22
-						font	"fonts/marine"
-					}
-					windowDef pop_fpc_player_box
-					{
-						rect	289,198,12,12
-						visible	1
-						background	"gfx/guis/mainmenu/box"
-						matcolor	1,1,1,0.6
-					}
-					windowDef pop_fpc_player_boxcheck
-					{
-						rect	289,198,12,12
-						visible	1
-						background	"gfx/guis/mainmenu/box_check"
-						matcolor	0.345,0.415,0.0313,1
-					}
-					windowDef pop_fpc_clan_box
-					{
-						rect	393,198,12,12
-						visible	1
-						background	"gfx/guis/mainmenu/box"
-						matcolor	1,1,1,0.6
-					}
-					windowDef pop_fpc_clan_boxcheck
-					{
-						rect	393,198,12,12
-						visible	1
-						background	"gfx/guis/mainmenu/box_check"
-						matcolor	0.345,0.415,0.0313,0
-					}
-					windowDef pop_fpc_search
-					{
-						rect	180,266,120,30
-						visible	1
-						background	"gfx/guis/mainmenu/b4_light"
-						matcolor	0.545,0.588,0.294,0.4
-					}
-					windowDef pop_fpc_t_search
-					{
-						rect	200,268,135,17
-						visible	1
-						forecolor	1,1,1,0.8
-						text	"#str_200257"
-						textscale	.28
-						font	"fonts/marine"
-					}
-					windowDef pop_fpc_search_corner
-					{
-						rect	190,274,11,11
-						visible	1
-						background	"gfx/guis/mainmenu/corner"
-						matcolor	0.564,0.603,0.286,0.4
-					}
-					windowDef pop_fpc_cancel
-					{
-						rect	337,266,120,30
-						visible	1
-						background	"gfx/guis/mainmenu/b4_light"
-						matcolor	0.545,0.588,0.294,0.4
-					}
-					windowDef pop_fpc_t_cancel
-					{
-						rect	357,268,115,17
-						visible	1
-						forecolor	1,1,1,0.8
-						text	"#str_200168"
-						textscale	.28
-						font	"fonts/marine"
-					}
-					windowDef pop_fpc_cancel_corner
-					{
-						rect	347,274,11,11
-						visible	1
-						background	"gfx/guis/mainmenu/corner"
-						matcolor	0.564,0.603,0.286,0.4
-					}
-				}
 			}
 		}
 		windowDef p_mp_friends
 		{
-			rect	0,0,640,480
-			visible	0
-			listDef mp_friends_list
+			windowDef p_howtoplay_items_title
 			{
-				rect	23,82,604,265
-				visible	1
-				scrollbar	1
-				listname	friendslist
-				tabstops	"20,196,303,555,584"
-				tabaligns	"0,0,0,2,0"
-				itemheight	20
-				backgroundHover	"gfx/guis/mainmenu/bg_hover2"
-				backgroundFocus	"gfx/guis/mainmenu/bg_focus2"
-				backgroundLine	"gfx/guis/mainmenu/bg_line2"
-				textscale	0.22
-				font	"fonts/lowpixel"
+				visible		1
+				rect		40, 30, 560, 30
+				text		"HOW TO PLAY - ITEMS & PICKUPS"
+				textfont	"fonts/default"
+				textscale	0.5
+				textalign	1 // Center
+				forecolor	1, 1, 1, 1
+			}
 
-				onAction {
-					set "cmd" "play main_menu_selection ; click_friendsList" ;
-				}
+			// --- LEFT COLUMN ---
+			windowDef p_howtoplay_item_rings_head : p_howtoplay_heading
+			{
+				rect		50, 90, 270, 20
+				text		"Rings"
+			}
+			windowDef p_howtoplay_item_rings_body : p_howtoplay_body
+			{
+				rect		50, 115, 270, 40
+				text		"Your health. Lose rings when you take damage. Lose them all and you die!"
+			}
 
-				onEnter {
-					set "cmd" "friendConnect ; play main_menu_selection" ;
-				}
+			windowDef p_howtoplay_item_chaos_head : p_howtoplay_heading
+			{
+				rect		50, 175, 270, 20
+				text		"Chaos Shards"
+			}
+			windowDef p_howtoplay_item_chaos_body : p_howtoplay_body
+			{
+				rect		50, 200, 270, 70
+				text		"Adds to your chaos energy, allowing you to perform Chaos Control."
+			}
 
-			}
-			windowDef mp_friends_name
+			windowDef p_howtoplay_item_boostup_head : p_howtoplay_heading
 			{
-				rect	43,70,165,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200242"
-				textscale	0.2
-				font	"fonts/lowpixel"
-				textspacing	-1
+				rect		50, 290, 270, 20
+				text		"Boost Up"
 			}
-			windowDef mp_friends_clan
+			windowDef p_howtoplay_item_boostup_body : p_howtoplay_body
 			{
-				rect	219,70,135,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200256"
-				textscale	0.2
-				font	"fonts/lowpixel"
-				textspacing	-1
+				rect		50, 315, 270, 40
+				text		"Adds to your boost counter, allowing you to Boost."
 			}
-			windowDef mp_friends_servername
+
+			// --- RIGHT COLUMN ---
+			windowDef p_howtoplay_item_shield_head : p_howtoplay_heading
 			{
-				rect	326,70,135,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200036"
-				textscale	0.2
-				font	"fonts/lowpixel"
-				textspacing	-1
+				rect		320, 90, 270, 20
+				text		"Shield Bubble"
 			}
-			windowDef mp_friends_ping
+			windowDef p_howtoplay_item_shield_body : p_howtoplay_body
 			{
-				rect	579,70,48,16
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200037"
-				textscale	0.2
-				font	"fonts/lowpixel"
-				textspacing	-1
+				rect		320, 115, 270, 40
+				text		"Makes you invulnerable to all damage until you are hit one time."
 			}
-			windowDef mp_friends_sortName
+
+			windowDef p_howtoplay_item_boostpower_head : p_howtoplay_heading
 			{
-				rect	25,87,183,264
-				visible	1
-				backcolor	0.607,0.647,0.270,0
+				rect		320, 175, 270, 20
+				text		"Boost Powerup"
 			}
-			windowDef mp_friends_sortClan
+			windowDef p_howtoplay_item_boostpower_body : p_howtoplay_body
 			{
-				rect	208,87,116,264
-				visible	1
-				backcolor	0.607,0.647,0.270,0
+				rect		320, 200, 270, 40
+				text		"Grants infinite boost for a set amount of time."
 			}
-			windowDef t_mp_friends_title
+
+
+			// --- NAVIGATION BUTTONS ---
+			windowDef p_howtoplay_item_back
 			{
-				rect	39,19,314,16
-				visible	1
-				forecolor	1,1,1,0
-				text	"#str_200258"
-				textscale	.25
-				font	"fonts/marine"
-			}
-			windowDef mp_friends_header
-			{
-				rect	22,53,587,37
-				visible	1
-				background	"gfx/guis/mainmenu/header"
-				matcolor	0.545,0.588,0.294,0.6
-			}
-			windowDef mp_friends_back
-			{
-				rect	532,441,109,30
-				visible	1
-				background	"gfx/guis/mainmenu/b4_light"
-				matcolor	0.545,0.588,0.294,0
-			}
-			windowDef mp_friends_back_corner
-			{
-				rect	542,449,11,11
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0
-			}
-			windowDef mp_friends_t_back
-			{
-				rect	552,443,88,17
-				visible	1
-				forecolor	1,1,1,0
-				text	"#str_200018"
-				textscale	.28
-				font	"fonts/marine"
-			}
-			windowDef mp_friends_horizline
-			{
-				rect	22,350,593,5
-				visible	1
-				background	"gfx/guis/mainmenu/horiz_line2"
-				matcolor	0.545,0.588,0.294,0.26
-			}
-			windowDef mp_friends_b1
-			{
-				rect	370,385,208,51
-				visible	1
-				background	"gfx/guis/mainmenu/b2_dark"
-				matcolor	1,1,1,0.4
-			}
-			windowDef mp_friends_joinserver_arrow
-			{
-				rect	383,397,24,24
-				visible	1
-				background	"gfx/guis/mainmenu/createserver_arrow"
-				matcolor	1,0.745,0.137,0.8
-			}
-			windowDef mp_friends_t_b1
-			{
-				rect	411,397,229,23
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200031"
-				textscale	.31
-				font	"fonts/marine"
-			}
-			windowDef mp_friends_b2
-			{
-				rect	20,385,208,51
-				visible	1
-				background	"gfx/guis/mainmenu/b2_dark"
-				matcolor	1,1,1,0.4
-			}
-			windowDef mp_friends_t_b2
-			{
-				rect	41,397,228,23
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"#str_200249"
-				textscale	.31
-				font	"fonts/marine"
-			}
-			windowDef mp_friends_b2_corner
-			{
-				rect	29,404,12,12
-				visible	1
-				background	"gfx/guis/mainmenu/corner"
-				matcolor	0.564,0.603,0.286,0.4
-			}
-			windowDef p_mp_friends_tooltip
-			{
-				rect	"desktop::tooltip_x","desktop::tooltip_y","desktop::tooltip_w","desktop::tooltip_h"
-				visible	"gui::serverinfo_visible"
-				windowDef mp_friends_ttip_top
-				{
-					rect	0,0,270,16
-					visible	1
-					background	"gfx/guis/mainmenu/tooltip_edge"
-					matcolor	1,1,1,.94
-				}
-				windowDef mp_friends_ttip_mid
-				{
-					rect	0,16,270,154
-					visible	1
-					background	"gfx/guis/mainmenu/tooltip_mid"
-					matcolor	1,1,1,.94
-				}
-				windowDef mp_friends_ttip_btm
-				{
-					rect	0,170,270,16
-					visible	1
-					background	"gfx/guis/mainmenu/tooltip_edge"
-					matcolor	1,1,1,.94
-					matscalex	-1
-					matscaley	-1
-				}
-				windowDef mp_friends_ttip_ipaddress
-				{
-					rect	6,5,244,16
-					visible	1
-					forecolor	1,1,1,1
-					text	"gui::server_tooltip_ip"
-					textscale	0.2
-					font	"fonts/lowpixel"
-					textspacing	-1
-				}
-				windowDef mp_friends_ttip_players
-				{
-					rect	7,27,105,14
-					visible	1
-					forecolor	1,1,1,0.4
-					text	"#str_200038"
-					textscale	.16
-					font	"fonts/lowpixel"
-				}
-				windowDef mp_friends_ttip_settings
-				{
-					rect	92,27,140,14
-					visible	1
-					forecolor	1,1,1,0.4
-					text	"#str_200928"
-					textscale	.16
-					font	"fonts/lowpixel"
-				}
-				listDef mp_friends_ttip_list_players
-				{
-					rect	7,40,80,139
-					visible	1
-					backcolor	0,0,0,0
-					scrollbar	1
-					listname	server_tooltip_playerlist
-					forecolor	1,1,1,0.8
-					textscale	0.18
-					font	"fonts/profont"
-					itemheight	12
-					backgroundHover	"gfx/effects/particles_shapes/blank"
-					backgroundFocus	"gfx/effects/particles_shapes/blank"
-					backgroundLine	"gfx/effects/particles_shapes/blank"
-					text	""
-				}
-				listDef mp_friends_ttip_list_settings
-				{
-					rect	92,40,172,88
-					visible	1
-					backcolor	0,0,0,0
-					scrollbar	1
-					listname	server_tooltip_settingslist
-					forecolor	1,1,1,0.8
-					textscale	0.18
-					font	"fonts/profont"
-					itemheight	12
-					matcolor	1,1,1,0.4
-					backgroundHover	"gfx/effects/particles_shapes/blank"
-					backgroundFocus	"gfx/effects/particles_shapes/blank"
-					backgroundLine	"gfx/effects/particles_shapes/blank"
-					text	""
-				}
-				windowDef mp_friends_ttip_vline1
-				{
-					rect	86,29,6,150
-					visible	1
-					background	"gfx/guis/mainmenu/vert_line2"
-					matcolor	0.545,0.588,0.294,0.32
-				}
-				windowDef mp_friends_ttip_hline1
-				{
-					rect	7,21,245,6
-					visible	1
-					background	"gfx/guis/mainmenu/horiz_line2"
-					matcolor	0.545,0.588,0.294,0.32
+				visible		1
+				rect		110, 430, 200, 24
+				text		"PREV (MOVEMENT)"
+				textfont	"fonts/default"
+				textscale	0.4
+				textalign	1 // Center
+				forecolor	1, 1, 1, 1
+	
+				onEnter		{ set "forecolor" 1 0.5 0 1; }
+				onLeave		{ set "forecolor" 1 1 1 1; }
+	
+				onAction	{ 
+					close "p_howtoplay_items";
+					open "p_howtoplay_movement";
 				}
 			}
-			windowDef mp_friends_loadbarbg
-			{
-				rect	21,355,593,16
-				visible	1
-				background	"gfx/guis/mainmenu/load_bar3"
-				matcolor	0.878,0.423,0,0.3
-			}
-			windowDef mp_friends_p_loadbar
-			{
-				rect	21,355,( "gui::loadPct" * 593 ),16
-				visible	1
-				windowDef mp_friends_loadbar
-				{
-					rect	0,0,593,16
-					visible	1
-					background	"gfx/guis/mainmenu/load_bar3"
-					matcolor	0.878,0.423,0,0.5
-				}
-			}
-			windowDef mp_friends_t_notice
-			{
-				rect	43,355,571,14
-				visible	1
-				forecolor	1,1,1,0.8
-				text	"gui::friend_notice"
-				textscale	0.2
-				font	"fonts/lowpixel"
-			}
+
 		}
 		windowDef p_mp_create
 		{
