@@ -288,6 +288,11 @@ void rvMonsterIronMaiden::OnDeath ( void ) {
 	// Stop looping effects
 	StopEffect ( "fx_banshee" );
 	StopEffect ( "fx_dress" );
+
+	const char* boostitem = "item_boost_powerup";
+	idVec3 itemDropVelocity = idVec3(0, 0, 100);
+	idVec3 Pos = GetPhysics()->GetOrigin() + idVec3(-50 + gameLocal.random.RandomFloat(), -50 + gameLocal.random.RandomFloat(), 100 + gameLocal.random.RandomFloat());
+	idMoveableItem::DropItem(boostitem, Pos, mat3_identity, itemDropVelocity, 0, 0);
 	
 	idAI::OnDeath( );
 }

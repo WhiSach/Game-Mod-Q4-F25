@@ -2356,16 +2356,16 @@ bool idPhysics_Player::CheckJump2(void) {
 void idPhysics_Player::SideStep( float side_scale ) {
 	gameLocal.Printf("Sidestep Dash!\n");
 	idVec3 step_dir;
-	float sidestep_speed = 400.0f; // Speed of the sidestep dash. Adjust this value!
+	float sidestep_speed = 400.0f;
 
-	// Calculate the desired step direction (purely sideways based on view)
-	step_dir = viewRight * side_scale; // side_scale will be -1.0 for left, 1.0 for right
 
-	// Remove any vertical component influenced by gravity direction
+	step_dir = viewRight * side_scale; 
+
+
 	step_dir -= (step_dir * gravityNormal) * gravityNormal;
-	step_dir.Normalize(); // Ensure it's a unit vector
+	step_dir.Normalize(); 
 
-	// Directly set the horizontal velocity, preserving the current vertical velocity (for jumps/falls)
+	
 	idVec3 current_horizontal_vel = current.velocity - (current.velocity * gravityNormal) * gravityNormal;
 	idVec3 current_vertical_vel = current.velocity - current_horizontal_vel;
 	current.velocity = current_vertical_vel + step_dir * sidestep_speed;

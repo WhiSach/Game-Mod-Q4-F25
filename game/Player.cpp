@@ -3425,7 +3425,7 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	}
 		
 	// god mode information
-	_hud->SetStateString( "player_god", va( "%i", (godmode && g_showGodDamage.GetBool()) ) );
+	_hud->SetStateString( "player_god", va( "%i", (Invinbility() ) ));
 	_hud->SetStateString( "player_god_damage", va( "%i", godmodeDamage ) );
 
 	// Update the hit direction
@@ -4065,67 +4065,83 @@ void idPlayer::CacheWeapons( void ) {
 idPlayer::Give
 ===============
 */
-bool idPlayer::Give( const char *statname, const char *value, bool dropped ) {
+bool idPlayer::Give(const char* statname, const char* value, bool dropped) {
 	int amount;
 
-	if ( pfl.dead ) {
+	if (pfl.dead) {
 		return false;
 	}
 
-	if ( IsInVehicle ( ) ) {
-		vehicleController.Give ( statname, value );
+	if (IsInVehicle()) {
+		vehicleController.Give(statname, value);
 	}
 
 	int boundaryHealth = inventory.maxHealth;
 	int boundaryArmor = inventory.maxarmor;
-	if( PowerUpActive( POWERUP_GUARD ) ) {
+	if (PowerUpActive(POWERUP_GUARD)) {
 		boundaryHealth = inventory.maxHealth / 2;
 		boundaryArmor = inventory.maxarmor / 2;
 	}
-	if( PowerUpActive( POWERUP_SCOUT ) ) {
+	if (PowerUpActive(POWERUP_SCOUT)) {
 		boundaryArmor = 0;
 	}
-	if ( gameLocal.isMultiplayer ) {
+	if (gameLocal.isMultiplayer) {
 		//In MP, you can get twice your max from pickups
 		boundaryArmor *= 2;
 	}
 
-	if ( !idStr::Icmp( statname, "health" ) ) {
-		if ( health >= boundaryHealth ) {
+	if (!idStr::Icmp(statname, "health")) {
+		if (health >= boundaryHealth) {
 			return false;
 		}
- 		amount = atoi( value );
- 		if ( amount ) {
- 			health += amount;
- 			if ( health > boundaryHealth ) {
- 				health = boundaryHealth;
- 			}
+		amount = atoi(value);
+		if (amount) {
+			health += amount;
+			if (health > boundaryHealth) {
+				health = boundaryHealth;
+			}
 		}
-	} else if ( !idStr::Icmp( statname, "bonushealth" ) ) {
+	}
+	else if (!idStr::Icmp(statname, "bonushealth")) {
 		// allow health over max health
-		if ( health >= boundaryHealth * 2 ) {
+		if (health >= boundaryHealth * 2) {
 			return false;
 		}
-		amount = atoi( value );
- 		if ( amount ) {
- 			health += amount;
- 			if ( health > boundaryHealth * 2 ) {
- 				health = boundaryHealth * 2;
- 			}
+		amount = atoi(value);
+		if (amount) {
+			health += amount;
+			if (health > boundaryHealth * 2) {
+				health = boundaryHealth * 2;
+			}
 		}
 		nextHealthPulse = gameLocal.time + HEALTH_PULSE;
-	} else if ( !idStr::Icmp( statname, "armor" ) ) {
-		if ( inventory.armor >= boundaryArmor ) {
-			return false;
-		}
-		amount = atoi( value );
+	}
+	else if (!idStr::Icmp(statname, "boost")) {
 
-		inventory.armor += amount;
-		if ( inventory.armor > boundaryArmor ) {
-			 inventory.armor = boundaryArmor;
-		}
+		amount = atoi(value);
+
+		boost += amount;
+
 		nextArmorPulse = gameLocal.time + ARMOR_PULSE;
-	} else if ( !idStr::Icmp( statname, "air" ) ) {
+	}
+	else if (!idStr::Icmp(statname, "chaosEnergy")) {
+		amount = atoi(value);
+
+		chaosEnergy += amount;
+	}
+	else if (!idStr::Icmp(statname, "shield")){
+		amount = atoi(value);
+		if (value) {
+			shieldActive = true;
+		}
+	}
+	else if (!idStr::Icmp(statname, "boostpowerup")) {
+		amount = atoi(value);
+		if (value) {
+			ActivateBoostPowerup(5000);
+		}
+	}
+	else if (!idStr::Icmp(statname, "air")) {
 		if ( airTics >= pm_airTics.GetInteger() ) {
 			return false;
 		}
@@ -9672,9 +9688,10 @@ void idPlayer::Think( void ) {
 
 	inBuyZonePrev = false;
 
-	if (!(usercmd.buttons & BUTTON_RUN) && (usercmd.forwardmove || usercmd.rightmove) && (usercmd.upmove >= 0)) {
+	if (!(usercmd.buttons & BUTTON_RUN) && (usercmd.forwardmove || usercmd.rightmove) && (usercmd.upmove >= 0) && !(boostPowerupActive)) {
 		UpdateBoost();
 	}
+	DeactivateBoostPowerup();
 
 	if (!Invinbility()) {
 		godmode = false;
@@ -10365,6 +10382,7 @@ void idPlayer::Damage( idEntity *inflictor, idEntity *attacker, const idVec3 &di
 		itemDropVelocity = idVec3( -50 + gameLocal.random.RandomFloat() * 100, -50 + gameLocal.random.RandomFloat() * 100, 100 + gameLocal.random.RandomFloat() * 50);
 		idMoveableItem::DropItem(ring, playerPos, mat3_identity, itemDropVelocity, 0, 0);
 	}
+	shieldActive = false;
 }
 
 /*
@@ -14123,12 +14141,13 @@ int idPlayer::CanSelectWeapon(const char* weaponName)
 
 void idPlayer::UpdateBoost(void) {
 	if (boost <= 0) {
+		gameLocal.Printf("Boost remaining: %d\n", boost);
 		return;
 	}
 
 	if (gameLocal.time >= nextBoostDecrementTime) {
 		boost--;
-
+		gameLocal.Printf("Boost remaining: %d\n", boost);
 		if (boost < 0) {
 			boost = 0;
 		}
@@ -14140,7 +14159,7 @@ void idPlayer::UpdateBoost(void) {
 bool idPlayer::Invinbility(void) {
 
 
-	if (!(usercmd.buttons & BUTTON_RUN)) {
+	if (!(usercmd.buttons & BUTTON_RUN) || (shieldActive)) {
 		godmode = true;
 		return true;
 	}
@@ -14150,11 +14169,41 @@ bool idPlayer::Invinbility(void) {
 bool idPlayer::quickst(bool hasqs) {
 	if (hasqs) {
 		godmode = true;
-		gameLocal.Printf("Invincibility On\n");
 	}
 	else{
 		return godmode = false;
-		//gameLocal.Printf("Invincibility Off\n");
 	}
+}
+
+void idPlayer::chaosControl(void) {
+	if (chaosEnergy > 0) {
+		idVec3 playerPos = GetPhysics()->GetOrigin();
+		idVec3 finalDestination = playerPos + idVec3(0, -700, 0);
+		GetPhysics()->SetOrigin(finalDestination);
+		chaosEnergy--;
+	}
+}
+void idPlayer::ActivateBoostPowerup(int durationMS) {
+	if (durationMS <= 0) {
+		return; 
+	}
+	boostPowerupActive = true;
+	gameLocal.Printf("Boost Powerup ACTIVATED for %d ms\n", durationMS);
+	boostPowerupEndTime = gameLocal.time + durationMS;
+}
+
+void idPlayer::DeactivateBoostPowerup() {
+	if (boostPowerupActive) {
+		gameLocal.Printf("Boost Powerup ACTIVE\n"); // Debug message
+		// Check if the powerup duration has expired
+		if (gameLocal.time >= boostPowerupEndTime) {
+			boostPowerupActive = false;
+			boostPowerupEndTime = 0; // Reset timer
+			gameLocal.Printf("Boost Powerup EXPIRED\n"); // Debug message
+			return;
+		}
+		return;
+	}
+
 }
 // RITUAL END

@@ -408,6 +408,10 @@ stateResult_t rvMonsterBerserker::State_Killed	( const stateParms_t& parms ) {
 	StopEffect ( "fx_charge_up" );
 	StopEffect ( "fx_ambient_electricity" );
 	StopEffect ( "fx_ambient_electricity_mace" );
+	const char* boostitem = "item_shield_bubble";/*"item_boost_shard";*/
+	idVec3 itemDropVelocity = idVec3(0, 0, 100);
+	idVec3 Pos = GetPhysics()->GetOrigin() + idVec3(-50 + gameLocal.random.RandomFloat(), -50 + gameLocal.random.RandomFloat(), 100 + gameLocal.random.RandomFloat());
+	idMoveableItem::DropItem(boostitem, Pos, mat3_identity, itemDropVelocity, 0, 0);
 	return idAI::State_Killed ( parms );
 }
 
