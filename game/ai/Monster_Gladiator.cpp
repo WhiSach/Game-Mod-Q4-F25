@@ -637,6 +637,11 @@ rvMonsterGladiator::State_Killed
 */
 stateResult_t rvMonsterGladiator::State_Killed ( const stateParms_t& parms ) {
 	HideShield ( );
+	const char* boostitem = "item_chaos_shard";
+	idVec3 itemDropVelocity = idVec3(0, 0, 100);
+	idVec3 playerPos = GetPhysics()->GetOrigin() + idVec3(-50 + gameLocal.random.RandomFloat(), -50 + gameLocal.random.RandomFloat(), 100 + gameLocal.random.RandomFloat());
+	idMoveableItem::DropItem(boostitem, playerPos, mat3_identity, itemDropVelocity, 0, 0);
+	gameLocal.Printf("Gladiator dropped a chaos shard!\n");
 	return idAI::State_Killed ( parms );
 }
 

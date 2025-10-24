@@ -3426,7 +3426,7 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	}
 		
 	// god mode information
-	_hud->SetStateString( "player_god", va( "%i", (godmode && g_showGodDamage.GetBool()) ) );
+	_hud->SetStateString( "player_god", va( "%i", (Invinbility() ) ));
 	_hud->SetStateString( "player_god_damage", va( "%i", godmodeDamage ) );
 
 	// Update the hit direction
@@ -4130,7 +4130,20 @@ bool idPlayer::Give(const char* statname, const char* value, bool dropped) {
 		amount = atoi(value);
 
 		chaosEnergy += amount;
-	} else if (!idStr::Icmp(statname, "air")) {
+	}
+	else if (!idStr::Icmp(statname, "shield")){
+		amount = atoi(value);
+		if (value) {
+			shieldActive = true;
+		}
+	}
+	else if (!idStr::Icmp(statname, "boostpowerup")) {
+		amount = atoi(value);
+		if (value) {
+			ActivateBoostPowerup(5000);
+		}
+	}
+	else if (!idStr::Icmp(statname, "air")) {
 		if ( airTics >= pm_airTics.GetInteger() ) {
 			return false;
 		}
@@ -8632,21 +8645,13 @@ void idPlayer::PerformImpulse( int impulse ) {
 
 		case IMPULSE_23: {
 			physicsObj.SideStep(-1.0f);
-			const char* boostitem = "item_boost_shard";
-			idVec3 itemDropVelocity = idVec3(0, 0, 100);
-			idVec3 playerPos = GetPhysics()->GetOrigin() + idVec3(-50 + gameLocal.random.RandomFloat(), -50 + gameLocal.random.RandomFloat(), 100 + gameLocal.random.RandomFloat());
 			quickst(true);
-			idMoveableItem::DropItem(boostitem, playerPos, mat3_identity, itemDropVelocity, 0, 0);
 			break;
 		}
 		godmode = false;
 		case IMPULSE_24: {
 			physicsObj.SideStep(1.0f);
-			const char* boostitem = "item_chaos_shard";
-			idVec3 itemDropVelocity = idVec3(0, 0, 100);
-			idVec3 playerPos = GetPhysics()->GetOrigin() + idVec3(-50 + gameLocal.random.RandomFloat(), -50 + gameLocal.random.RandomFloat(), 100 + gameLocal.random.RandomFloat());
 			quickst(true);
-			idMoveableItem::DropItem(boostitem, playerPos, mat3_identity, itemDropVelocity, 0, 0);
 			break;
 		}
 		godmode = false;
@@ -9690,9 +9695,10 @@ void idPlayer::Think( void ) {
 
 	inBuyZonePrev = false;
 
-	if (!(usercmd.buttons & BUTTON_RUN) && (usercmd.forwardmove || usercmd.rightmove) && (usercmd.upmove >= 0)) {
+	if (!(usercmd.buttons & BUTTON_RUN) && (usercmd.forwardmove || usercmd.rightmove) && (usercmd.upmove >= 0) && !(boostPowerupActive)) {
 		UpdateBoost();
 	}
+	DeactivateBoostPowerup();
 
 	if (!Invinbility()) {
 		godmode = false;
@@ -10383,6 +10389,7 @@ void idPlayer::Damage( idEntity *inflictor, idEntity *attacker, const idVec3 &di
 		itemDropVelocity = idVec3( -50 + gameLocal.random.RandomFloat() * 100, -50 + gameLocal.random.RandomFloat() * 100, 100 + gameLocal.random.RandomFloat() * 50);
 		idMoveableItem::DropItem(ring, playerPos, mat3_identity, itemDropVelocity, 0, 0);
 	}
+	shieldActive = false;
 }
 
 /*
@@ -14141,12 +14148,13 @@ int idPlayer::CanSelectWeapon(const char* weaponName)
 
 void idPlayer::UpdateBoost(void) {
 	if (boost <= 0) {
+		gameLocal.Printf("Boost remaining: %d\n", boost);
 		return;
 	}
 
 	if (gameLocal.time >= nextBoostDecrementTime) {
 		boost--;
-
+		gameLocal.Printf("Boost remaining: %d\n", boost);
 		if (boost < 0) {
 			boost = 0;
 		}
@@ -14158,7 +14166,7 @@ void idPlayer::UpdateBoost(void) {
 bool idPlayer::Invinbility(void) {
 
 
-	if (!(usercmd.buttons & BUTTON_RUN)) {
+	if (!(usercmd.buttons & BUTTON_RUN) || (shieldActive)) {
 		godmode = true;
 		return true;
 	}
@@ -14168,11 +14176,9 @@ bool idPlayer::Invinbility(void) {
 bool idPlayer::quickst(bool hasqs) {
 	if (hasqs) {
 		godmode = true;
-		gameLocal.Printf("Invincibility On\n");
 	}
 	else{
 		return godmode = false;
-		//gameLocal.Printf("Invincibility Off\n");
 	}
 }
 
@@ -14183,5 +14189,28 @@ void idPlayer::chaosControl(void) {
 		GetPhysics()->SetOrigin(finalDestination);
 		chaosEnergy--;
 	}
+}
+void idPlayer::ActivateBoostPowerup(int durationMS) {
+	if (durationMS <= 0) {
+		return; 
+	}
+	boostPowerupActive = true;
+	gameLocal.Printf("Boost Powerup ACTIVATED for %d ms\n", durationMS);
+	boostPowerupEndTime = gameLocal.time + durationMS;
+}
+
+void idPlayer::DeactivateBoostPowerup() {
+	if (boostPowerupActive) {
+		gameLocal.Printf("Boost Powerup ACTIVE\n"); // Debug message
+		// Check if the powerup duration has expired
+		if (gameLocal.time >= boostPowerupEndTime) {
+			boostPowerupActive = false;
+			boostPowerupEndTime = 0; // Reset timer
+			gameLocal.Printf("Boost Powerup EXPIRED\n"); // Debug message
+			return;
+		}
+		return;
+	}
+
 }
 // RITUAL END

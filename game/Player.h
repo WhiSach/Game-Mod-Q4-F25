@@ -428,6 +428,9 @@ public:
 	int 					boost;
 	int						nextBoostDecrementTime;
 	int						chaosEnergy;
+	bool					shieldActive;
+	bool					boostPowerupActive = false;
+	int						boostPowerupEndTime;
 public:
 	CLASS_PROTOTYPE( idPlayer );
 
@@ -802,7 +805,9 @@ public:
 	void					UpdateBoost( void );
 	bool					Invinbility( void );
 	bool					quickst(bool hasqs);
-	void					chaosControl(void);
+	void					chaosControl(void);	
+	void					ActivateBoostPowerup(int durationMS);
+	void					DeactivateBoostPowerup();
 protected:
 	void					SetupHead( const char* modelKeyName = "", idVec3 headOffset = idVec3(0, 0, 0) );
 
