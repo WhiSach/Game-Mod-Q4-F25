@@ -3445,7 +3445,7 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	
 	
 	_hud->SetStateString("pda_boost", va("%d", boost));
-
+	_hud->SetStateString("chaosenergy", va("%d", chaosEnergy));
 	_hud->StateChanged( gameLocal.time );
 }
 
