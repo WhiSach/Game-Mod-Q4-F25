@@ -1,4 +1,4 @@
-# Quake 4: Sonic The HedgeHod Mod
+# Quake 4: Sonic The Hedgehog Mod
 
 ## Overview
 This is a custom Quake 4 modification inspired by *Sonic the Hedgehog*, bringing new high-speed movement mechanics and unique item pickups Quake 4 engine.
