@@ -1,7 +1,7 @@
-# Quake 4 Mod: ModTest
+# Quake 4: Sonic The HedgeHod Mod
 
 ## Overview
-**ModTest** is a custom Quake 4 modification inspired by *Sonic the Hedgehog*, bringing new high-speed movement mechanics and unique item pickups Quake 4 engine.
+This is a custom Quake 4 modification inspired by *Sonic the Hedgehog*, bringing new high-speed movement mechanics and unique item pickups Quake 4 engine.
 
 
 ---
