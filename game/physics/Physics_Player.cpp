@@ -2354,7 +2354,6 @@ bool idPhysics_Player::CheckJump2(void) {
 }
 
 void idPhysics_Player::SideStep( float side_scale ) {
-	gameLocal.Printf("Sidestep Dash!\n");
 	idVec3 step_dir;
 	float sidestep_speed = 400.0f;
 
@@ -2368,5 +2367,5 @@ void idPhysics_Player::SideStep( float side_scale ) {
 	
 	idVec3 current_horizontal_vel = current.velocity - (current.velocity * gravityNormal) * gravityNormal;
 	idVec3 current_vertical_vel = current.velocity - current_horizontal_vel;
-	current.velocity = current_vertical_vel + step_dir * sidestep_speed;
+	current.velocity = current_vertical_vel + step_dir * sidestep_speed*4;
 }

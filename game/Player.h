@@ -804,7 +804,6 @@ public:
 
 	void					UpdateBoost( void );
 	bool					Invinbility( void );
-	bool					quickst(bool hasqs);
 	void					chaosControl(void);	
 	void					ActivateBoostPowerup(int durationMS);
 	void					DeactivateBoostPowerup();
